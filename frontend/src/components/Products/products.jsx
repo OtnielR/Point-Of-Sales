@@ -1,34 +1,35 @@
-import React, { useEffect, useState } from "react"
-import { getProducts } from "../../api/products"
-import Product from "./product"
+import React, { useEffect, useState } from "react";
+import { getProducts } from "../../api/products";
+import Product from "./product";
 
 export default function Products() {
-  const [products, setProducts] = useState([])
+  const [products, setProducts] = useState([]);
 
   useEffect(() => {
     async function fetchData() {
       try {
-        const data = await getProducts()
-        console.log(data)
-        setProducts(data)
+        const data = await getProducts();
+        console.log(data);
+        setProducts(data);
       } catch (err) {
-        console.log(err)
+        console.log(err);
       }
     }
 
-    fetchData()
-  }, [])
+    fetchData();
+  }, []);
 
-  return (<>
-    <div id="products">
-      <div className="w-2/3">
-        <div className="grid grid-cols-4 gap-x-4 gap-y-12">
-          {products.map(product => (
-            <Product product={product} key={product.id}></Product>
-          ))}
+  return (
+    <>
+      <div id="products">
+        <div className="w-2/3">
+          <div className="grid grid-cols-3 gap-x-4 gap-y-12">
+            {products.map((product) => (
+              <Product product={product} key={product.id}></Product>
+            ))}
+          </div>
         </div>
       </div>
-    </div>
-
-  </>)
+    </>
+  );
 }
