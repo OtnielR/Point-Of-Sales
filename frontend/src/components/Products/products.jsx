@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getProducts } from "../../api/products";
 import Product from "./product";
+import Header from "./products-header";
 
 export default function Products() {
   const [products, setProducts] = useState([]);
@@ -21,9 +22,10 @@ export default function Products() {
 
   return (
     <>
-      <div id="products">
-        <div className="w-2/3">
-          <div className="grid grid-cols-3 gap-x-4 gap-y-12">
+      <div className="flex flex-col w-2/3 gap-4">
+        <Header></Header>
+        <div id="products" className="w-full">
+          <div className="grid grid-cols-3 gap-x-4 gap-y-4">
             {products.map((product) => (
               <Product product={product} key={product.id}></Product>
             ))}
