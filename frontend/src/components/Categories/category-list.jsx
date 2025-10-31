@@ -1,32 +1,20 @@
-import { useRef, useState, useEffect } from "react"
-import { getCategories } from "../../api/category"
-
-export default function CategoryList() {
-  const [categories, setCategories] = useState([])
-
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const data = await getCategories();
-        console.log(data);
-        setCategories(data);
-      } catch (err) {
-        console.log(err);
-      }
-    }
-
-    fetchData();
-  }, []);
-
+export default function CategoryList({ category, onDelete }) {
+  console.log(category)
   return (<>
-    <div>
+    <div className="flex flex-row justify-between">
       <div>
-        <p className="font-bold">Categories List</p>
+        <p className="font-bold">
+          {category.name}
+        </p>
+        <p>
+          {category.description}
+        </p>
       </div>
-      <div>{categories.map(category => (<div>
-        <p>{category.name}</p>
-      </div>))}</div>
+      <div>
+        <button onClick={onDelete} className="bg-red-400 text-center rounded-full w-6 h-6">
+          x
+        </button>
+      </div>
     </div>
   </>)
-
 }

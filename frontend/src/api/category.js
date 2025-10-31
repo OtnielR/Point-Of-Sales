@@ -2,23 +2,33 @@ import api from "./axios"
 
 export async function getCategories() {
     const response = await api.get('/api/categories')
+    console.log(response.data)
     return response.data
 }
 
 export async function postCategory(name, description) {
-    const formData = new FormData()
-
-    console.log(name, description)
-
-    formData.append("name", name)
-    formData.append("description", description)
-
-
     try {
-        const res = await api.post("/api/categories", formData);
+        const res = await api.post("/api/categories", {
+            name,
+            description
+        });
         console.log(res.data);
+
+        return true
     } catch (err) {
         console.error(err);
+        return false
     }
+}
 
+export async function deleteCategory(id) {
+    try {
+        const res = await api.delete(`/api/categories/${id}`);
+        console.log(res.data);
+
+        return true
+    } catch (err) {
+        console.error(err);
+        return false
+    }
 }

@@ -9,6 +9,9 @@ export const initDB = async () => {
     driver: sqlite3.Database,
   });
 
+
+  await db.exec("PRAGMA foreign_keys = ON;");
+
   // Tables Categories
   await db.exec(`
     CREATE TABLE IF NOT EXISTS categories (
@@ -41,7 +44,7 @@ export const initDB = async () => {
     stock INTEGER,
     image_url VARCHAR(255),
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (category_id) REFERENCES categories(id)
+    FOREIGN KEY (category_id) REFERENCES categories(id) ON DELETE CASCADE
 )
 `)
 
@@ -67,8 +70,8 @@ export const initDB = async () => {
       amount INTEGER,
       total DECIMAL(15, 2),
       created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-      FOREIGN KEY (sales_id) REFERENCES sales(id),
-      FOREIGN KEY (product_id) REFERENCES products(id)
+      FOREIGN KEY (sales_id) REFERENCES sales(id) ON DELETE CASCADE,
+      FOREIGN KEY (product_id) REFERENCES products(id) ON DELETE CASCADE
 )
 `)
 

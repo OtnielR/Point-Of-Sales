@@ -1,12 +1,12 @@
 import Sidebar from "../components/sidebar"
-import Products from "../components/Products/products"
+import ProductsForm from "../components/Products/products-form"
 
-export default function Home() {
+export default function Products() {
   return (<>
     <main className="flex flex-row gap-8">
       <Sidebar></Sidebar>
       <section className="flex flex-row w-11/12">
-        <Products></Products>
+        <ProductsForm></ProductsForm>
       </section>
     </main>
   </>)

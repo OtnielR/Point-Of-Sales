@@ -7,8 +7,6 @@ export default function CategoryForm() {
   const categoryDescriptionRef = useRef()
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
-
     postCategory(categoryNameRef.current.value, categoryDescriptionRef.current.value)
   }
 

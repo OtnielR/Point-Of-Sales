@@ -1,6 +1,6 @@
 import Sidebar from "../components/sidebar"
 import CategoryForm from "../components/Categories/category-form"
-import CategoryList from "../components/Categories/category-list"
+import CategoryLists from "../components/Categories/category-lists"
 
 export default function Category() {
   return (<>
@@ -8,7 +8,7 @@ export default function Category() {
       <Sidebar></Sidebar>
       <section className="flex flex-row w-11/12">
         <CategoryForm></CategoryForm>
-        <CategoryList></CategoryList>
+        <CategoryLists></CategoryLists>
       </section>
     </main>
   </>)

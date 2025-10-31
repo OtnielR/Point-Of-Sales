@@ -25,6 +25,7 @@ export const categoryController = (db) => {
         },
         create: async (req, res, next) => {
             try {
+                console.log("Incoming: ", req.body)
                 const newCategory = await categoryModel.create(req.body);
                 res.status(201).json(newCategory);
             } catch (err) {
