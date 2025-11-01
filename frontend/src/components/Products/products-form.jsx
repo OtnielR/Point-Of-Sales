@@ -40,9 +40,8 @@ export default function ProductsForm() {
   };
 
   return (
-    <div className="w-full flex flex-col justify-center items-center gap-4 ">
+    <div className=" flex flex-col flex-1 justify-center items-center gap-4 py-10">
       <div className="w-1/2 bg-white py-4 px-10 shadow-md rounded-lg">
-
 
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
           <h2 className="text-2xl font-bold text-gray-800">Add Product</h2>

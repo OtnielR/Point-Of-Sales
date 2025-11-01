@@ -3,9 +3,9 @@ import Products from "../components/Products/products"
 
 export default function Home() {
   return (<>
-    <main className="flex flex-row gap-8">
+    <main className="flex flex-row gap-4">
       <Sidebar></Sidebar>
-      <section className="flex flex-row w-11/12">
+      <section className="flex flex-row flex-1 w-11/12 h-screen">
         <Products></Products>
       </section>
     </main>

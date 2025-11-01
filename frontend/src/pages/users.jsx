@@ -1,12 +1,14 @@
 import Sidebar from "../components/sidebar"
-import ProductsForm from "../components/Products/products-form"
+import UsersForm from "../components/Users/users-form"
+import UsersLists from "../components/Users/users-lists"
 
-export default function Products() {
+export default function Users() {
   return (<>
     <main className="flex flex-row gap-4">
       <Sidebar></Sidebar>
       <section className="flex flex-row w-11/12">
-        <ProductsForm></ProductsForm>
+        <UsersForm></UsersForm>
+        <UsersLists></UsersLists>
       </section>
     </main>
   </>)
