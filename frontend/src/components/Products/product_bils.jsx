@@ -6,7 +6,7 @@ import ProductOrder from "./product-order";
 function product_bils({ productOrders }) {
   return (
     <div className="w-1/3 h-screen px-4 py-8">
-      <div className="bg-white flex flex-col gap-3 h-full py-2 px-6">
+      <div className="bg-white flex flex-col gap-3 h-full py-5 px-8 rounded-lg">
         <div className="title">
           <h1 className="font-bold text-2xl">Current Order</h1>
         </div>
@@ -44,7 +44,7 @@ function product_bils({ productOrders }) {
               <div className="">Rp.0000</div>
             </div>
           </div>
-          <div className="button flex justify-center py-2 bg-violet-700 rounded-lg    ">
+          <div className="button flex justify-center py-2 bg-purple-600 rounded-lg    ">
             <button className="text-white">Continue</button>
           </div>
         </div>
