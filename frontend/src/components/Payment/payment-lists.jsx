@@ -1,7 +1,6 @@
 import PaymentList from "./payment-list"
 
 export default function PaymentLists({ productOrders }) {
-  console.log(productOrders)
 
   return (<>
     <div className="flex-1 h-full flex flex-col gap-8">

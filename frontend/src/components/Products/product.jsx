@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { getImageUrl } from "../../api/image";
 export default function Product({ product, category, handleAddOrder }) {
   return (
@@ -12,7 +13,7 @@ export default function Product({ product, category, handleAddOrder }) {
         </div>
         <div className="flex flex-col gap-2">
           <div className="flex flex-col">
-            <p className="font-bold text-xl">{product.name}</p>
+            <Link to={`product/${product.id}`} className="font-bold text-xl hover:underline">{product.name}</Link>
             <p className="text-md">{category.name}</p>
           </div>
           <div className='flex flex-row justify-between'>

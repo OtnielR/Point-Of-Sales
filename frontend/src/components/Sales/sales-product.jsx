@@ -1,7 +1,6 @@
 import { getImageUrl } from "../../api/image";
 
 export default function SalesProduct({ product, amount, index }) {
-  console.log(amount)
   return (<>
     <div className="flex flex-row gap-4">
       <div className="w-20 h-20 overflow-hidden">

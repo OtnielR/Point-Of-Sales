@@ -7,7 +7,7 @@ export const createProductsRoutes = (controller) => {
     router.get("/", controller.getAll);
     router.get("/:id", controller.getById);
     router.post("/", upload.single("image"), controller.create);
-    router.put("/:id", controller.update);
+    router.put("/:id", upload.single("image"), controller.update);
     router.delete("/:id", controller.delete);
 
     return router;

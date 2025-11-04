@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react"
 import { countCostPrices, countSellingPrice, countProfit } from "../../utils/countBills"
 import SalesProduct from "./sales-product"
+import { formatDate } from "../../utils/date"
 
 export default function SalesList({ sale, user, saleDetail, products, index }) {
   const [costPrices, setCostPrices] = useState(0)
   const [sellingPrices, setSellingPrices] = useState(0)
   const [profit, setProfit] = useState(0)
+  const [dates, setDates] = useState()
 
   useEffect(() => {
     const countData = () => {
@@ -13,6 +15,7 @@ export default function SalesList({ sale, user, saleDetail, products, index }) {
       setSellingPrices(countSellingPrice(products, saleDetail))
       setProfit(countProfit(products, saleDetail))
 
+      setDates(formatDate(sale.created_at))
     }
 
     countData()
@@ -23,15 +26,18 @@ export default function SalesList({ sale, user, saleDetail, products, index }) {
 
   return (<>
     <div className="flex flex-col gap-4 bg-white px-4 py-4">
-      <div className="flex flex-row gap-4">
-        <div>
+      <div className="w-full flex flex-row gap-4">
+        <div className="">
           <p>{index}</p>
         </div>
-        <div>
-          <p>{user.username} | {user.role}</p>
-        </div>
-        <div>
-          <p>{sale.created_at}</p>
+        <div className="flex flex-1 flex-row justify-between">
+          <div>
+            <p>{user.username} | {user.role}</p>
+          </div>
+          <div>
+            <p>{dates}</p>
+          </div>
+
         </div>
       </div>
       <div className="flex flex-row gap-8">

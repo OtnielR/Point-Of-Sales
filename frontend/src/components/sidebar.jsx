@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 export default function Sidebar() {
-  const mainNav = [{ icon_url: "home-icon.svg", link: "/", }, { icon_url: "list-icon.svg", link: '/products' }, { icon_url: "category-icon.svg", link: '/categories', }, { icon_url: "user-icon.svg", link: "/users" }, { icon_url: "sales-icon.svg", link: "/sales" },];
+  const mainNav = [{ icon_url: "/home-icon.svg", link: "/", }, { icon_url: "/list-icon.svg", link: '/products' }, { icon_url: "/category-icon.svg", link: '/categories', }, { icon_url: "/user-icon.svg", link: "/users" }, { icon_url: "/sales-icon.svg", link: "/sales" },];
 
   return (<>
     <div id="sidebar" className="w-28 h-screen px-6 py-6">

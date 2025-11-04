@@ -34,7 +34,15 @@ export const productsController = (db) => {
         },
         update: async (req, res, next) => {
             try {
-                const updatedProduct = await productsModel.update(req.params.id, req.body);
+                let image_url = null
+
+                if (!req.body.image_url) {
+                    image_url = req.file ? `/uploads/${req.file.filename}` : null;
+                } else {
+                    image_url = req.body.image_url
+                }
+                const updatedProduct = await productsModel.update(req.params.id, req.body, image_url);
+                console.log("Image Url:", image_url)
                 res.json(updatedProduct);
             } catch (err) {
                 next(err);

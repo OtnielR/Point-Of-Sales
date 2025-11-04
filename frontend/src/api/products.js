@@ -6,6 +6,11 @@ export async function getProducts() {
     return response.data
 }
 
+export async function getProduct(id) {
+    const response = await api.get(`/api/products/${id}`)
+    return response.data
+}
+
 export async function postProducts(name, categoryId, costPrice, sellingPrice, stock, image) {
     const formData = new FormData();
 
@@ -21,6 +26,31 @@ export async function postProducts(name, categoryId, costPrice, sellingPrice, st
 
     try {
         const res = await api.post("/api/products", formData, {
+            headers: { "Content-Type": "multipart/form-data" },
+        });
+    } catch (err) {
+        console.error(err);
+    }
+}
+export async function putProducts(id, name, categoryId, costPrice, sellingPrice, stock, image, image_url) {
+    const formData = new FormData();
+
+    formData.append("name", name);
+    formData.append("category_id", categoryId);
+    formData.append("cost_price", costPrice);
+    formData.append("selling_price", sellingPrice);
+    formData.append("stock", stock);
+
+    console.log("Image: ", image)
+
+    if (image) {
+        formData.append("image", image);
+    } else {
+        formData.append("image_url", image_url)
+    }
+
+    try {
+        const res = await api.put(`/api/products/${id}`, formData, {
             headers: { "Content-Type": "multipart/form-data" },
         });
     } catch (err) {
