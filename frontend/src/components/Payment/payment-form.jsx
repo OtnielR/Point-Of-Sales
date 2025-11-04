@@ -3,7 +3,7 @@ import { postSaleDetail } from "../../api/sale-detail"
 import { useState, useRef, useEffect } from "react"
 import { countSubtotal } from "../../utils/countBills"
 
-export default function PaymentForm({ productOrders, togglePaymentForm }) {
+export default function PaymentForm({ productOrders, togglePaymentForm, handleToggleReceipt }) {
   const [total, setTotal] = useState(0)
   const [changeAmount, setChangeAmount] = useState(0)
   const customerMoneyRef = useRef()
@@ -32,7 +32,7 @@ export default function PaymentForm({ productOrders, togglePaymentForm }) {
       postSaleDetail(sales.id, order.id, order.amount, order.amount * order.selling_price)
     });
 
-    togglePaymentForm()
+    handleToggleReceipt(sales)
   }
 
   return (<>

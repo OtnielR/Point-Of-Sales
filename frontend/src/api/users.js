@@ -2,7 +2,12 @@ import api from "./axios"
 
 export async function getUsers() {
     const response = await api.get('/api/users')
-    console.log(response.data)
+    return response.data
+}
+
+export async function getUser(id) {
+    console.log(id)
+    const response = await api.get(`/api/users/${id}`)
     return response.data
 }
 

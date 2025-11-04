@@ -5,6 +5,16 @@ export async function getSaleDetail() {
     return response.data
 }
 
+export async function getSaleDetailById(id) {
+    const response = await api.get(`/api/sale-detail/${id}`)
+    return response.data
+}
+
+export async function getSaleDetailBySalesId(id) {
+    const response = await api.get(`/api/sale-detail/sales/${id}`)
+    return response.data
+}
+
 export async function postSaleDetail(sales_id, product_id, amount, total) {
     try {
         const res = await api.post("/api/sale-detail", {
