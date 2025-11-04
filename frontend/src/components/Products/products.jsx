@@ -14,6 +14,7 @@ export default function Products() {
   const [searchInput, setSearchInput] = useState("")
   const [selectValue, setSelectValue] = useState("")
   const [showPayment, setShowPayment] = useState(false)
+  const [priceFilteredProducts, setPriceFilteredProducts] = useState([])
 
   useEffect(() => {
     async function fetchData() {
@@ -74,6 +75,68 @@ export default function Products() {
     }
   }
 
+  const handlePriceFilter = (minPrice, maxPrice) => {
+    setProducts((prev) => [...prev, ...priceFilteredProducts])
+
+    const currentProducts = [...products, ...priceFilteredProducts]
+
+    const currentPriceFilteredProducts = currentProducts.filter(prod => prod.selling_price <= minPrice || prod.selling_price >= maxPrice)
+
+    setPriceFilteredProducts(currentPriceFilteredProducts)
+
+    setProducts(currentProducts.filter(prod => prod.selling_price >= minPrice && prod.selling_price <= maxPrice))
+
+  }
+
+  const handleResetFilter = () => {
+    setPriceFilteredProducts([])
+    filteredProducts(searchInput, selectValue)
+  }
+
+  const handleSortByName = (isAscending) => {
+    let sortedArray
+
+    if (isAscending) {
+      sortedArray = products.sort((prod_1, prod_2) => prod_1.name.localeCompare(prod_2.name))
+
+      setProducts(prev => [...sortedArray])
+    } else {
+      sortedArray = products.sort((prod_1, prod_2) => prod_2.name.localeCompare(prod_1.name))
+
+      setProducts(prev => [...sortedArray])
+    }
+  }
+
+  const handleSortByPrice = (isAscending) => {
+    let sortedArray
+
+    if (isAscending) {
+      sortedArray = products.sort((prod_1, prod_2) => prod_1.selling_price - prod_2.selling_price)
+
+      setProducts(prev => [...sortedArray])
+    } else {
+      sortedArray = products.sort((prod_1, prod_2) => prod_2.selling_price - prod_1.selling_price)
+
+      setProducts(prev => [...sortedArray])
+    }
+  }
+
+  const handleSortByStock = (isAscending) => {
+    let sortedArray
+
+    if (isAscending) {
+      sortedArray = products.sort((prod_1, prod_2) => prod_1.stock - prod_2.stock)
+
+      setProducts(prev => [...sortedArray])
+    } else {
+      sortedArray = products.sort((prod_1, prod_2) => prod_2.stock - prod_1.stock)
+
+      setProducts(prev => [...sortedArray])
+    }
+  }
+
+
+
   const handleAddOrder = (product) => {
     product['amount'] = 1
 
@@ -97,7 +160,15 @@ export default function Products() {
       <Payment showPayment={showPayment} togglePaymentForm={togglePaymentForm} productOrders={productOrders}></Payment>
       <div className="flex flex-row flex-1 h-screen">
         <div className="flex flex-col flex-1 w-2/3 gap-4 h-screen">
-          <Header handleSearchInput={handleSearchInput} handleSelectChange={handleSelectChange} categories={categories}></Header>
+          <Header
+            handleSearchInput={handleSearchInput}
+            handleSelectChange={handleSelectChange}
+            handlePriceFilter={handlePriceFilter}
+            handleResetFilter={handleResetFilter}
+            handleSortByName={handleSortByName}
+            handleSortByPrice={handleSortByPrice}
+            handleSortByStock={handleSortByStock}
+            categories={categories}></Header>
           <div id="products" className="w-full flex-1">
             <div className="grid grid-cols-3 gap-x-6 gap-y-6">
               {products.map((product) => {

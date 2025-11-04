@@ -14,10 +14,13 @@ function product_bils({ productOrders, removeOrders, togglePaymentForm }) {
   const handleProductAmount = () => {
     setSubTotal(countSubtotal(productOrders))
 
+    setTotal(countSubtotal(productOrders))
   }
 
   useEffect(() => {
     setSubTotal(countSubtotal(productOrders))
+    setTotal(countSubtotal(productOrders))
+
   }, [productOrders])
 
 

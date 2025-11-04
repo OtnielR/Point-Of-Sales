@@ -1,11 +1,39 @@
 import { useState, useEffect, useRef } from "react";
 
-export default function ProductsHeader({ handleSearchInput, categories, handleSelectChange }) {
+export default function ProductsHeader({ handleSearchInput, handleSelectChange, handlePriceFilter, handleResetFilter, handleSortByName, handleSortByPrice, handleSortByStock, categories }) {
   const [isShowCategories, setIsShowCategories] = useState(false)
+  const [isShowFilter, setIsShowFilter] = useState(false)
   const selectCategoryRef = useRef()
+
+  const priceFilteredButton = [
+    {
+      minPrice: 0,
+      maxPrice: 25_000,
+      text: "0 - 25K"
+    },
+    {
+      minPrice: 25_000,
+      maxPrice: 50_000,
+      text: "25K - 50K"
+    },
+    {
+      minPrice: 50_000,
+      maxPrice: 75_000,
+      text: "50K - 75K"
+    },
+    {
+      minPrice: 75_000,
+      maxPrice: 100_000,
+      text: "75K - 100K"
+    },
+  ]
 
   const toggleShowCategories = () => {
     setIsShowCategories(!isShowCategories)
+  }
+
+  const toggleShowFilter = () => {
+    setIsShowFilter(!isShowFilter)
   }
 
   return (
@@ -53,8 +81,58 @@ export default function ProductsHeader({ handleSearchInput, categories, handleSe
                 />
               </div>
             </form>
-            <div className="bg-grey-600">
-              <img className="w-8" src="filter.png" alt="" />
+            <div className="relative bg-grey-600" >
+              <img className="w-8 transition-transform hover:scale-115" src="filter.png" alt="" onClick={toggleShowFilter} />
+              <div className={`w-110 absolute bg-white px-4 py-4 z-50 shadow-xl rounded-lg translate-y-4 ${isShowFilter ? "block" : "hidden"}`} style={{ transform: "translateX(-50%)" }}>
+                <div>
+                  <div className="w-full flex flex-row jusfity-center">
+                    <p className="w-full text-center font-bold">Filter Products</p>
+                  </div>
+                  <div>
+                    <div>
+                      <button className="border px-4 py-2 rounded-lg" onClick={handleResetFilter}>Reset</button>
+                    </div>
+                  </div>
+                  <div>
+                    <div>
+                      Prices
+                    </div>
+                    <div className="flex flex-row gap-4">
+                      {priceFilteredButton.map((button, index) => (
+                        <button
+                          onClick={() => handlePriceFilter(button.minPrice, button.maxPrice)}
+                          className="border w-1/4 "
+                          key={index}
+                        >{button.text}</button>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="w-full flex flex-row jusfity-center">
+                    <p className="w-full text-center font-bold">Sort Products</p>
+                  </div>
+                  <div>
+                    <p>Name</p>
+                    <p className="flex flex-row gap-2">
+                      <button className="w-1/4 border px-4" onClick={() => handleSortByName(true)}>Ascending</button>
+                      <button className="w-1/4 border px-4" onClick={() => handleSortByName(false)}>Descending</button>
+                    </p>
+                  </div>
+                  <div>
+                    <p>Price</p>
+                    <p className="flex flex-row gap-2">
+                      <button className="w-1/4 border px-4" onClick={() => handleSortByPrice(true)}>Ascending</button>
+                      <button className="w-1/4 border px-4" onClick={() => handleSortByPrice(false)}>Descending</button>
+                    </p>
+                  </div>
+                  <div>
+                    <p>Stock</p>
+                    <p className="flex flex-row gap-2">
+                      <button className="w-1/4 border px-4" onClick={() => handleSortByStock(true)}>Ascending</button>
+                      <button className="w-1/4 border px-4" onClick={() => handleSortByStock(false)}>Descending</button>
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
