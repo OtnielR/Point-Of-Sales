@@ -10,20 +10,21 @@ export default function CategoryForm() {
   };
 
   return (
-    <div className="w-full flex justify-center items-center py-10 bg-gray-100">
-      <div className="w-1/2 max-w-2xl bg-white p-8 shadow-md rounded-lg">
-        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+    <div className="w-full flex justify-center py-10 ">
+      <div className="w-full max-w-xl bg-white shadow-lg rounded-2xl p-8 border border-gray-100">
+        
+        <h2 className="text-2xl font-bold text-gray-800 mb-6">Add Category</h2>
 
-          <h2 className="text-2xl font-bold text-gray-800 mb-2">
-            Add Category
-          </h2>
-
+        <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+          
           <div className="flex flex-col gap-1">
             <label className="text-gray-700 font-medium">Category Name</label>
             <input
               ref={categoryNameRef}
               type="text"
-              className="border rounded px-3 py-2 w-full focus:ring-2 focus:ring-purple-500 outline-none"
+              className="border rounded-lg px-3 py-2 w-full focus:ring-2 focus:ring-purple-500 outline-none"
+              placeholder="Enter category name"
+              required
             />
           </div>
 
@@ -32,7 +33,8 @@ export default function CategoryForm() {
             <input
               ref={categoryDescriptionRef}
               type="text"
-              className="border rounded px-3 py-2 w-full focus:ring-2 focus:ring-purple-500 outline-none"
+              className="border rounded-lg px-3 py-2 w-full focus:ring-2 focus:ring-purple-500 outline-none"
+              placeholder="Enter category description"
             />
           </div>
 

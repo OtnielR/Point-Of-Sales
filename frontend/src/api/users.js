@@ -6,7 +6,6 @@ export async function getUsers() {
 }
 
 export async function getUser(id) {
-    console.log(id)
     const response = await api.get(`/api/users/${id}`)
     return response.data
 }

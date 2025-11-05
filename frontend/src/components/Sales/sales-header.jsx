@@ -7,12 +7,11 @@ export default function SalesHeader({ handleChangeDate }) {
   return (<>
     <div className="w-full">
       <div>
-        <p className="font-bold">Sales</p>
+        <p className="font-bold">Sales History</p>
       </div>
       <div>
         <input ref={inputDateRef} onChange={(e) => handleChangeDate(e.target.value)} type="date" />
       </div>
-
     </div>
   </>)
 }

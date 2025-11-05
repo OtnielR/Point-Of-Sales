@@ -1,40 +1,49 @@
 import { useState, useEffect, useRef } from "react";
 
-export default function ProductsHeader({ handleSearchInput, handleSelectChange, handlePriceFilter, handleResetFilter, handleSortByName, handleSortByPrice, handleSortByStock, categories }) {
-  const [isShowCategories, setIsShowCategories] = useState(false)
-  const [isShowFilter, setIsShowFilter] = useState(false)
-  const selectCategoryRef = useRef()
+export default function ProductsHeader({
+  handleSearchInput,
+  handleSelectChange,
+  handlePriceFilter,
+  handleResetFilter,
+  handleSortByName,
+  handleSortByPrice,
+  handleSortByStock,
+  categories,
+}) {
+  const [isShowCategories, setIsShowCategories] = useState(false);
+  const [isShowFilter, setIsShowFilter] = useState(false);
+  const selectCategoryRef = useRef();
 
   const priceFilteredButton = [
     {
       minPrice: 0,
       maxPrice: 25_000,
-      text: "0 - 25K"
+      text: "0 - 25K",
     },
     {
       minPrice: 25_000,
       maxPrice: 50_000,
-      text: "25K - 50K"
+      text: "25K - 50K",
     },
     {
       minPrice: 50_000,
       maxPrice: 75_000,
-      text: "50K - 75K"
+      text: "50K - 75K",
     },
     {
       minPrice: 75_000,
       maxPrice: 100_000,
-      text: "75K - 100K"
+      text: "75K - 100K",
     },
-  ]
+  ];
 
   const toggleShowCategories = () => {
-    setIsShowCategories(!isShowCategories)
-  }
+    setIsShowCategories(!isShowCategories);
+  };
 
   const toggleShowFilter = () => {
-    setIsShowFilter(!isShowFilter)
-  }
+    setIsShowFilter(!isShowFilter);
+  };
 
   return (
     <>
@@ -43,13 +52,31 @@ export default function ProductsHeader({ handleSearchInput, handleSelectChange, 
         <div className="flex flex-row justify-between items-center gap-48">
           <div className="flex flex-row items-center">
             <div className="text-2xl font-bold" onClick={toggleShowCategories}>
-              <select ref={selectCategoryRef} onChange={handleSelectChange} className="appearance-none outine-none focus:outline-none" name="" id="">
-                <option className="py-10" value="">General</option>
-                {categories.map((category) => <option key={category.id} value={category.name}>{category.name}</option>)}
+              <select
+                ref={selectCategoryRef}
+                onChange={handleSelectChange}
+                className="appearance-none outine-none focus:outline-none"
+                name=""
+                id=""
+              >
+                <option className="" value="">
+                  General
+                </option>
+                {categories.map((category) => (
+                  <option key={category.id} value={category.name}>
+                    {category.name}
+                  </option>
+                ))}
               </select>
             </div>
-            <div className="" >
-              <img className={`h-8 transition-transform ${isShowCategories ? "rotate-180" : "rotate-0"}`} src="down-arrow.png" alt="" />
+            <div className="">
+              <img
+                className={`h-8 transition-transform ${
+                  isShowCategories ? "rotate-180" : "rotate-0"
+                }`}
+                src="down-arrow.png"
+                alt=""
+              />
             </div>
           </div>
           <div className="flex flex-row flex-1 items-center gap-4">
@@ -81,54 +108,105 @@ export default function ProductsHeader({ handleSearchInput, handleSelectChange, 
                 />
               </div>
             </form>
-            <div className="relative bg-grey-600" >
-              <img className="w-8 transition-transform hover:scale-115" src="filter.png" alt="" onClick={toggleShowFilter} />
-              <div className={`w-110 absolute bg-white px-4 py-4 z-50 shadow-xl rounded-lg translate-y-4 ${isShowFilter ? "block" : "hidden"}`} style={{ transform: "translateX(-50%)" }}>
+            <div className="relative bg-grey-600">
+              <img
+                className="w-8 transition-transform hover:scale-115"
+                src="filter.png"
+                alt=""
+                onClick={toggleShowFilter}
+              />
+              <div
+                className={`w-110 absolute bg-white px-4 py-4 z-50 shadow-xl rounded-lg translate-y-4 ${
+                  isShowFilter ? "block" : "hidden"
+                }`}
+                style={{ transform: "translateX(-50%)" }}
+              >
                 <div>
                   <div className="w-full flex flex-row jusfity-center">
-                    <p className="w-full text-center font-bold">Filter Products</p>
+                    <p className="w-full text-center font-bold">
+                      Filter Products
+                    </p>
                   </div>
                   <div>
                     <div>
-                      <button className="border px-4 py-2 rounded-lg" onClick={handleResetFilter}>Reset</button>
+                      <button
+                        className="border px-4 py-2 rounded-lg"
+                        onClick={handleResetFilter}
+                      >
+                        Reset
+                      </button>
                     </div>
                   </div>
                   <div>
-                    <div>
-                      Prices
-                    </div>
+                    <div>Prices</div>
                     <div className="flex flex-row gap-2">
                       {priceFilteredButton.map((button, index) => (
                         <button
-                          onClick={() => handlePriceFilter(button.minPrice, button.maxPrice)}
+                          onClick={() =>
+                            handlePriceFilter(button.minPrice, button.maxPrice)
+                          }
                           className="border w-1/4 bg-black text-white rounded-2xl text-center"
                           key={index}
-                        >{button.text}</button>
+                        >
+                          {button.text}
+                        </button>
                       ))}
                     </div>
                   </div>
                   <div className="w-full flex flex-row jusfity-center">
-                    <p className="w-full text-center font-bold">Sort Products</p>
+                    <p className="w-full text-center font-bold">
+                      Sort Products
+                    </p>
                   </div>
                   <div>
                     <p>Name</p>
                     <p className="flex flex-row gap-2">
-                      <button className="w-1/4 border px-4" onClick={() => handleSortByName(true)}>Ascending</button>
-                      <button className="w-1/4 border px-4" onClick={() => handleSortByName(false)}>Descending</button>
+                      <button
+                        className="w-1/4 border px-4"
+                        onClick={() => handleSortByName(true)}
+                      >
+                        Ascending
+                      </button>
+                      <button
+                        className="w-1/4 border px-4"
+                        onClick={() => handleSortByName(false)}
+                      >
+                        Descending
+                      </button>
                     </p>
                   </div>
                   <div>
                     <p>Price</p>
                     <p className="flex flex-row gap-2">
-                      <button className="w-1/4 border px-4" onClick={() => handleSortByPrice(true)}>Ascending</button>
-                      <button className="w-1/4 border px-4" onClick={() => handleSortByPrice(false)}>Descending</button>
+                      <button
+                        className="w-1/4 border px-4"
+                        onClick={() => handleSortByPrice(true)}
+                      >
+                        Ascending
+                      </button>
+                      <button
+                        className="w-1/4 border px-4"
+                        onClick={() => handleSortByPrice(false)}
+                      >
+                        Descending
+                      </button>
                     </p>
                   </div>
                   <div>
                     <p>Stock</p>
                     <p className="flex flex-row gap-2">
-                      <button className="w-1/4 border px-4" onClick={() => handleSortByStock(true)}>Ascending</button>
-                      <button className="w-1/4 border px-4" onClick={() => handleSortByStock(false)}>Descending</button>
+                      <button
+                        className="w-1/4 border px-4"
+                        onClick={() => handleSortByStock(true)}
+                      >
+                        Ascending
+                      </button>
+                      <button
+                        className="w-1/4 border px-4"
+                        onClick={() => handleSortByStock(false)}
+                      >
+                        Descending
+                      </button>
                     </p>
                   </div>
                 </div>

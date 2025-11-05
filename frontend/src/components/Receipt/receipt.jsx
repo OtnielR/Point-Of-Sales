@@ -41,7 +41,7 @@ export default function Receipt({ saleId, togglePaymentForm, handleToggleReceipt
 
     fetchData()
 
-  }, [])
+  }, [saleId, productOrders])
 
   const handlePrint = () => {
     window.print()
@@ -54,6 +54,7 @@ export default function Receipt({ saleId, togglePaymentForm, handleToggleReceipt
 
   return (<>
     <div className="w-screen h-screen fixed top-0 left-0 z-50">
+      <TransparentBlackBackground></TransparentBlackBackground>
       <div className="receipt flex fixed w-full h-full justify-center items-center z-70">
         <div className="w-1/3 flex flex-col gap-8 bg-white px-4 py-4 rounded-lg">
           <div className="w-full flex flex-col gap-6">
@@ -75,7 +76,7 @@ export default function Receipt({ saleId, togglePaymentForm, handleToggleReceipt
             </div>
             <hr />
             <div className="flex flex-col gap-2">
-              {productOrders.map((order) => <ReceiptProduct product={order} key={productOrders.id}></ReceiptProduct>)
+              {productOrders.map((order) => <ReceiptProduct key={order.id} product={order} key={productOrders.id}></ReceiptProduct>)
               }
             </div>
             <hr />

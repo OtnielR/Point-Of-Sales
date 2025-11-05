@@ -60,7 +60,7 @@ export default function ProductOrder({ product, removeOrders, handleProductAmoun
 
             <h1 className="font-bold">{productAmount}</h1>
 
-            <div className="w-6 h-6 bg-white rounded-full">
+            <div className="w-6 h-6 bg- rounded-full">
               <button onClick={increaseProductAmount} className="w-full text-white ">
                 <img src="plus.png" alt="" className="" />
               </button>

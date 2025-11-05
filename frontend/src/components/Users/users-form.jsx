@@ -16,44 +16,49 @@ export default function UsersForm() {
   };
 
   return (
-    <div className=" w-2/3 flex flex-col flex-1 justify-center items-center gap-4 py-10">
-      <div className="w-2/3 bg-white py-4 px-10 shadow-md rounded-lg">
+   <div className="w-full flex justify-center py-10 ">
+      <div className="w-full max-w-lg bg-white p-8 shadow-lg rounded-xl border border-gray-200">
+        <h2 className="text-xl font-bold text-gray-800 mb-6">Create New User</h2>
 
-        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-          <h2 className="text-2xl font-bold text-gray-800">Add Users</h2>
-          <div>
-            <p>Username:</p>
+        <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+          <div className="flex flex-col gap-1">
+            <label className="text-sm font-medium text-gray-700">Username</label>
             <input
               ref={userNameRef}
               type="text"
-              className="border rounded px-2 py-1 w-full  focus:ring-2 focus:ring-purple-500 outline-none"
+              className="border rounded-lg px-3 py-2 w-full bg-gray-50 focus:bg-white focus:ring-2 focus:ring-purple-500 outline-none transition"
+              placeholder="Enter username"
+              required
             />
           </div>
 
-          <div>
-            <p>Role:</p>
+          <div className="flex flex-col gap-1">
+            <label className="text-sm font-medium text-gray-700">Role</label>
             <select
               ref={userRoleRef}
-              className="border rounded px-2 py-1 w-full  focus:ring-2 focus:ring-purple-500 outline-none"
+              className="border rounded-lg px-3 py-2 w-full bg-gray-50 focus:bg-white focus:ring-2 focus:ring-purple-500 outline-none transition"
+              required
             >
               <option value="Kasir">Kasir</option>
               <option value="Admin">Admin</option>
             </select>
           </div>
 
-          <div>
-            <p>Password :</p>
+          <div className="flex flex-col gap-1">
+            <label className="text-sm font-medium text-gray-700">Password</label>
             <input
               ref={userPasswordRef}
               type="password"
-              className="border rounded px-2 py-1 w-full  focus:ring-2 focus:ring-purple-500 outline-none"
+              className="border rounded-lg px-3 py-2 w-full bg-gray-50 focus:bg-white focus:ring-2 focus:ring-purple-500 outline-none transition"
+              placeholder="••••••••"
+              required
             />
           </div>
-          <button className="bg-purple-600 hover:bg-purple-700 text-white py-2 rounded-lg font-medium transition">
+
+          <button className="bg-purple-600 hover:bg-purple-700 text-white py-2 rounded-lg font-semibold transition shadow-md hover:shadow-lg">
             Submit
           </button>
         </form>
       </div>
-    </div>
-  );
+    </div>  );
 }

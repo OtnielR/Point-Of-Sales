@@ -1,4 +1,5 @@
 import SalesProduct from "./sales-product"
+import { Link } from "react-router-dom"
 import { useState, useEffect } from "react"
 import { countCostPrices, countSellingPrice, countProfit } from "../../utils/countBills"
 import { formatDate } from "../../utils/date"
@@ -13,16 +14,17 @@ export default function SalesList({ sale, user, saleDetail, products, index }) {
   const [paidAmount, setPaidAmount] = useState(0)
   const [changeAmount, setChangeAmount] = useState(0)
 
+
   useEffect(() => {
     const countData = () => {
       setCostPrices(countCostPrices(products, saleDetail))
       setSellingPrices(countSellingPrice(products, saleDetail))
-      setProfit(countProfit(products, saleDetail))
+      setProfit(formatToRupiah(countProfit(products, saleDetail)))
 
-      // setTotalAmount(formatToRupiah(sale.total_amount))
+      setTotalAmount(formatToRupiah(sale.total_amount))
       // setPaidAmount(formatToRupiah(sale.paid_amount))
       // setChangeAmount(formatToRupiah(sale.change_amount))
-      //
+
       setDates(formatDate(sale.created_at))
     }
 
@@ -33,57 +35,28 @@ export default function SalesList({ sale, user, saleDetail, products, index }) {
 
 
   return (<>
-    <div className="flex flex-col gap-4 bg-white px-4 py-4">
-      <div className="w-full flex flex-row gap-4">
-        <div className="">
-          <p>{index}</p>
+    <Link to={`/sale/${sale.id}`}>
+      <div className="flex flex-row h-14 transition-transform hover:scale-102 items-center px-4 py-2 w-full bg-white">
+        <div className="w-1/10">
+          <p>#{sale.id}</p>
+        </div >
+        <div className="w-3/10">
+          <p>{user.username}</p>
         </div>
-        <div className="flex flex-1 flex-row justify-between">
-          <div>
-            <p>{user.username} | {user.role}</p>
-          </div>
-          <div>
-            <p>{dates}</p>
-          </div>
-
+        <div className="w-1/10">
+          <p className="text-green-700">Completed</p>
+        </div>
+        <div className="w-2/10">
+          {totalAmount}
+        </div>
+        <div className="w-2/10">
+          <p className="text-green-700">{profit}</p>
+        </div>
+        <div className="w-2/10">
+          {dates}
         </div>
       </div>
-      <div className="flex flex-row gap-8">
-        <div className="w-1/3">
-          <div>
-            <p>Sale Detail</p>
-          </div>
-          <div className="flex flex-row gap-8">
-            <div>
-              <p>Total Amount: {sale.total_amount}</p>
-              <p>Paid Amount: {sale.paid_amount}</p>
-              <p>Change Amount: {sale.change_amount}</p>
-            </div>
-            <div>
-              <p>Cost Prices: {costPrices}</p>
-              <p>Selling Prices: {sellingPrices}</p>
-              <p>Profit: {profit}</p>
-            </div>
+    </Link>
 
-          </div>
-        </div>
-        <div className="flex-1">
-          <div>
-            <p>Products Detail</p>
-          </div>
-          <div>
-            <div className="grid grid-cols-2 gap-x-4 gap-y-4">
-              {products.map((product, index) => {
-                const amount = saleDetail.find(det => det.product_id === product.id).amount
-
-                return <SalesProduct key={product.id} index={index} product={product} amount={amount}></SalesProduct>
-              })}
-            </div>
-          </div>
-        </div>
-
-
-      </div>
-    </div>
   </>)
 }

@@ -40,11 +40,13 @@ export default function ProductsForm() {
   };
 
   return (
-    <div className=" flex flex-col flex-1 justify-center items-center gap-4 py-10">
-      <div className="w-1/2 bg-white py-4 px-10 shadow-md rounded-lg">
-
+    <div className="w-full h-screen flex flex-col justify-center items-center overflow-hidden">
+      <div className="w-[650px] bg-white py-6 px-8 shadow-md rounded-lg overflow-hidden">
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-          <h2 className="text-2xl font-bold text-gray-800">Add Product</h2>
+          <h2 className="text-xl font-bold text-gray-800 text-center">
+            Add Product
+          </h2>
+
           <label
             htmlFor="file-upload"
             className="flex flex-col items-center justify-center w-48 h-48 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100 transition relative overflow-hidden"
@@ -70,11 +72,10 @@ export default function ProductsForm() {
                     d="M3 16l4-4a4 4 0 015.657 0L21 20M15 10h.01M9 4h6M12 7v6"
                   ></path>
                 </svg>
-                <p className="text-gray-600 font-medium">Upload Product Image</p>
-                <p className="text-gray-400 text-sm">Click to select file</p>
+                <p className="text-gray-600 font-medium">Upload Image</p>
+                <p className="text-gray-400 text-sm">Click to select</p>
               </div>
             )}
-
             <input
               id="file-upload"
               ref={productImageRef}
@@ -90,15 +91,15 @@ export default function ProductsForm() {
             <input
               ref={productNameRef}
               type="text"
-              className="border rounded px-2 py-1 w-full  focus:ring-2 focus:ring-purple-500 outline-none"
+              className="border rounded px-2 py-1 w-full focus:ring-2 focus:ring-purple-500 outline-none"
             />
           </div>
 
           <div>
-            <p>Product Category:</p>
+            <p>Category:</p>
             <select
               ref={productCategoryRef}
-              className="border rounded px-2 py-1 w-full  focus:ring-2 focus:ring-purple-500 outline-none"
+              className="border rounded px-2 py-1 w-full focus:ring-2 focus:ring-purple-500 outline-none"
             >
               {categories.map((category) => (
                 <option value={category.id} key={category.id}>
@@ -113,7 +114,7 @@ export default function ProductsForm() {
             <input
               ref={productCostPriceRef}
               type="number"
-              className="border rounded px-2 py-1 w-full  focus:ring-2 focus:ring-purple-500 outline-none"
+              className="border rounded px-2 py-1 w-full focus:ring-2 focus:ring-purple-500 outline-none"
             />
           </div>
 
@@ -122,7 +123,7 @@ export default function ProductsForm() {
             <input
               ref={productSellingPriceRef}
               type="number"
-              className="border rounded px-2 py-1 w-full  focus:ring-2 focus:ring-purple-500 outline-none"
+              className="border rounded px-2 py-1 w-full focus:ring-2 focus:ring-purple-500 outline-none"
             />
           </div>
 
@@ -131,7 +132,7 @@ export default function ProductsForm() {
             <input
               ref={productStockRef}
               type="number"
-              className="border rounded px-2 py-1 w-full  focus:ring-2 focus:ring-purple-500 outline-none"
+              className="border rounded px-2 py-1 w-full focus:ring-2 focus:ring-purple-500 outline-none"
             />
           </div>
 
