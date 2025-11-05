@@ -43,8 +43,8 @@ export default function ProductsHeader({ handleSearchInput, handleSelectChange, 
         <div className="flex flex-row justify-between items-center gap-48">
           <div className="flex flex-row items-center">
             <div className="text-2xl font-bold" onClick={toggleShowCategories}>
-              <select ref={selectCategoryRef} onChange={handleSelectChange} className="appearance-none outine-none" name="" id="">
-                <option value="">General</option>
+              <select ref={selectCategoryRef} onChange={handleSelectChange} className="appearance-none outine-none focus:outline-none" name="" id="">
+                <option className="py-10" value="">General</option>
                 {categories.map((category) => <option key={category.id} value={category.name}>{category.name}</option>)}
               </select>
             </div>
@@ -97,11 +97,11 @@ export default function ProductsHeader({ handleSearchInput, handleSelectChange, 
                     <div>
                       Prices
                     </div>
-                    <div className="flex flex-row gap-4">
+                    <div className="flex flex-row gap-2">
                       {priceFilteredButton.map((button, index) => (
                         <button
                           onClick={() => handlePriceFilter(button.minPrice, button.maxPrice)}
-                          className="border w-1/4 "
+                          className="border w-1/4 bg-black text-white rounded-2xl text-center"
                           key={index}
                         >{button.text}</button>
                       ))}

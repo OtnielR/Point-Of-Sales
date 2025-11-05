@@ -16,8 +16,10 @@ export default function Product({ product, category, handleAddOrder }) {
       <div className="flex flex-col gap-2 bg-white px-4 py-4 rounded-2xl">
         <div className="w-full h-38 overflow-hidden">
           <img
+
             src={getImageUrl(product.image_url)}
             className="object-cover w-full h-full rounded-lg"
+
             alt=""
           />
         </div>
@@ -33,7 +35,9 @@ export default function Product({ product, category, handleAddOrder }) {
             </div>
 
             <div className="flex items-center justify-center w-6 h-full  ">
-              <button onClick={() => handleAddOrder(product)} className="w-12 bg-black rounded-full text-white text-center">+</button>
+              <button onClick={() => handleAddOrder(product)} className="w-12 rounded-full text-white text-center">
+                <img src="plus.png" alt="" className="" />
+              </button>
             </div>
           </div>
 

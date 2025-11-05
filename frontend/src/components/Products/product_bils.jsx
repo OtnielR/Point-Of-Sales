@@ -4,31 +4,28 @@ import ProductOrder from "./product-order";
 import { countSubtotal } from "../../utils/countBills";
 import { formatToRupiah } from "../../utils/currency";
 
-
 function product_bils({ productOrders, removeOrders, togglePaymentForm }) {
-  const [subTotal, setSubTotal] = useState(0)
-  const [discount, setDiscount] = useState(0)
-  const [serviceCharge, setServiceCharge] = useState(0)
-  const [tax, setTax] = useState(0)
-  const [total, setTotal] = useState(0)
+  const [subTotal, setSubTotal] = useState(0);
+  const [discount, setDiscount] = useState(0);
+  const [serviceCharge, setServiceCharge] = useState(0);
+  const [tax, setTax] = useState(0);
+  const [total, setTotal] = useState(0);
 
   const handleProductAmount = () => {
-    let newSubTotal = countSubtotal(productOrders)
-    setSubTotal(formatToRupiah(newSubTotal))
+    let newSubTotal = countSubtotal(productOrders);
+    setSubTotal(formatToRupiah(newSubTotal));
 
-    let newTotal = countSubtotal(productOrders)
-    setTotal(formatToRupiah(newTotal))
-  }
+    let newTotal = countSubtotal(productOrders);
+    setTotal(formatToRupiah(newTotal));
+  };
 
   useEffect(() => {
-    let newSubTotal = countSubtotal(productOrders)
-    setSubTotal(formatToRupiah(newSubTotal))
+    let newSubTotal = countSubtotal(productOrders);
+    setSubTotal(formatToRupiah(newSubTotal));
 
-    let newTotal = countSubtotal(productOrders)
-    setTotal(formatToRupiah(newTotal))
-  }, [productOrders])
-
-
+    let newTotal = countSubtotal(productOrders);
+    setTotal(formatToRupiah(newTotal));
+  }, [productOrders]);
 
   return (
     <div className="w-1/3 h-screen px-4 py-8">
@@ -42,7 +39,12 @@ function product_bils({ productOrders, removeOrders, togglePaymentForm }) {
 
         <div className="flex flex-col flex-1 overflow-y-scroll gap-4">
           {productOrders.map((product) => (
-            <ProductOrder key={product.id} product={product} removeOrders={removeOrders} handleProductAmount={handleProductAmount}></ProductOrder>
+            <ProductOrder
+              key={product.id}
+              product={product}
+              removeOrders={removeOrders}
+              handleProductAmount={handleProductAmount}
+            ></ProductOrder>
           ))}
         </div>
         <div className="container flex flex-col gap-3">
@@ -70,8 +72,11 @@ function product_bils({ productOrders, removeOrders, togglePaymentForm }) {
               <div className="">{total}</div>
             </div>
           </div>
-          <div className="button flex justify-center py-2 bg-purple-600 rounded-lg" onClick={togglePaymentForm}>
-            <button className="text-white" >Continue</button>
+          <div
+            className="button flex justify-center py-2 bg-black rounded-lg"
+            onClick={togglePaymentForm}
+          >
+            <button className="text-white">Continue</button>
           </div>
         </div>
       </div>
