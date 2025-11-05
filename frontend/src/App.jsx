@@ -6,6 +6,7 @@ import Products from './pages/products';
 import Product from './pages/product';
 import Users from './pages/users';
 import Sales from './pages/sales';
+import Sale from './pages/sale';
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
           <Route path='/product/:id' element={<Product></Product>}></Route>
           <Route path='/users' element={<Users></Users>}></Route>
           <Route path='/sales' element={<Sales></Sales>}></Route>
+          <Route path='/sale/:id' element={<Sale></Sale>}></Route>
         </Routes>
       </BrowserRouter>
     </>
