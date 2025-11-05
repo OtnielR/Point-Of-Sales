@@ -5,6 +5,11 @@ export async function getCategories() {
     return response.data
 }
 
+export async function getCategory(id) {
+    const response = await api.get(`/api/categories/${id}`)
+    return response.data
+}
+
 export async function postCategory(name, description) {
     try {
         const res = await api.post("/api/categories", {

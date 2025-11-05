@@ -12,7 +12,6 @@ export default function ProductDetail({ id }) {
 
       setProduct(data)
 
-      console.log(data)
     }
 
     fetchData()

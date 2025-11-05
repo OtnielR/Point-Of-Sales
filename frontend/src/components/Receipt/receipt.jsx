@@ -6,6 +6,7 @@ import { getSaleDetailBySalesId } from "../../api/sale-detail"
 import { useEffect, useState } from "react"
 import { formatDate } from "../../utils/date"
 import { countSubtotal } from "../../utils/countBills"
+import { formatToRupiah } from "../../utils/currency"
 
 export default function Receipt({ saleId, togglePaymentForm, handleToggleReceipt, productOrders }) {
   const [sale, setSale] = useState([])
@@ -14,6 +15,8 @@ export default function Receipt({ saleId, togglePaymentForm, handleToggleReceipt
   const [saleDetail, setSaleDetail] = useState([])
   const [subTotal, setSubTotal] = useState(0)
   const [total, setTotal] = useState(0)
+  const [paidAmount, setPaidAmount] = useState(0)
+  const [changeAmount, setChangeAmount] = useState(0)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -30,8 +33,10 @@ export default function Receipt({ saleId, togglePaymentForm, handleToggleReceipt
 
       setSaleDate(formatDate(saleData.created_at))
 
-      setSubTotal(countSubtotal(productOrders))
-      setTotal(countSubtotal(productOrders))
+      setSubTotal(formatToRupiah(countSubtotal(productOrders)))
+      setTotal(formatToRupiah(countSubtotal(productOrders)))
+      setPaidAmount(formatToRupiah(saleData.paid_amount))
+      setChangeAmount(formatToRupiah(saleData.change_amount))
     }
 
     fetchData()
@@ -77,19 +82,19 @@ export default function Receipt({ saleId, togglePaymentForm, handleToggleReceipt
             <div>
               <div className="w-full flex flex-row justify-between">
                 <p>Sub Total: </p>
-                <p>Rp. {subTotal}</p>
+                <p>{subTotal}</p>
               </div>
               <div className="w-full flex flex-row justify-between font-bold">
                 <p>Total: </p>
-                <p>Rp. {total}</p>
+                <p>{total}</p>
               </div>
               <div className="w-full flex flex-row justify-between">
                 <p>Bayar (cash): </p>
-                <p>Rp. {sale.paid_amount}</p>
+                <p>{paidAmount}</p>
               </div>
               <div className="w-full flex flex-row justify-between">
                 <p>Kembali</p>
-                <p>Rp. {sale.change_amount}</p>
+                <p>{changeAmount}</p>
               </div>
             </div>
 

@@ -1,6 +1,19 @@
+import { useState, useEffect } from "react"
 import { getImageUrl } from "../../api/image"
+import { formatToRupiah } from "../../utils/currency"
+
 
 export default function PaymentList({ product, index }) {
+  const [sellingPrice, setSellingPrice] = useState(0)
+  const [totalPrice, setTotalPrice] = useState(0)
+
+  useEffect(() => {
+    setSellingPrice(formatToRupiah(product.selling_price))
+
+    let newTotalPrice = product.selling_price * product.amount
+    setTotalPrice(formatToRupiah(newTotalPrice))
+  }, [product])
+
   return (<>
     <div className="flex flex-row gap-4">
       <div>
@@ -21,12 +34,12 @@ export default function PaymentList({ product, index }) {
 
             <div className="flex flex-row gap-4">
 
-              <p>Rp. {product.selling_price}</p>
+              <p>{sellingPrice}</p>
               <p>Amount: {product.amount}</p>
 
             </div>
             <div>
-              <p className="font-bold">Total: Rp. {product.selling_price * product.amount}</p>
+              <p className="font-bold">Total: {totalPrice}</p>
             </div>
           </div>
 

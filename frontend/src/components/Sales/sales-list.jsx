@@ -1,13 +1,17 @@
+import SalesProduct from "./sales-product"
 import { useState, useEffect } from "react"
 import { countCostPrices, countSellingPrice, countProfit } from "../../utils/countBills"
-import SalesProduct from "./sales-product"
 import { formatDate } from "../../utils/date"
+import { formatToRupiah } from "../../utils/currency"
 
 export default function SalesList({ sale, user, saleDetail, products, index }) {
   const [costPrices, setCostPrices] = useState(0)
   const [sellingPrices, setSellingPrices] = useState(0)
   const [profit, setProfit] = useState(0)
   const [dates, setDates] = useState()
+  const [totalAmount, setTotalAmount] = useState(0)
+  const [paidAmount, setPaidAmount] = useState(0)
+  const [changeAmount, setChangeAmount] = useState(0)
 
   useEffect(() => {
     const countData = () => {
@@ -15,12 +19,16 @@ export default function SalesList({ sale, user, saleDetail, products, index }) {
       setSellingPrices(countSellingPrice(products, saleDetail))
       setProfit(countProfit(products, saleDetail))
 
+      // setTotalAmount(formatToRupiah(sale.total_amount))
+      // setPaidAmount(formatToRupiah(sale.paid_amount))
+      // setChangeAmount(formatToRupiah(sale.change_amount))
+      //
       setDates(formatDate(sale.created_at))
     }
 
     countData()
 
-  }, [products])
+  }, [products, sale])
 
 
 

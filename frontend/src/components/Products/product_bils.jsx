@@ -2,6 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import ProductOrder from "./product-order";
 import { countSubtotal } from "../../utils/countBills";
+import { formatToRupiah } from "../../utils/currency";
 
 
 function product_bils({ productOrders, removeOrders, togglePaymentForm }) {
@@ -12,15 +13,19 @@ function product_bils({ productOrders, removeOrders, togglePaymentForm }) {
   const [total, setTotal] = useState(0)
 
   const handleProductAmount = () => {
-    setSubTotal(countSubtotal(productOrders))
+    let newSubTotal = countSubtotal(productOrders)
+    setSubTotal(formatToRupiah(newSubTotal))
 
-    setTotal(countSubtotal(productOrders))
+    let newTotal = countSubtotal(productOrders)
+    setTotal(formatToRupiah(newTotal))
   }
 
   useEffect(() => {
-    setSubTotal(countSubtotal(productOrders))
-    setTotal(countSubtotal(productOrders))
+    let newSubTotal = countSubtotal(productOrders)
+    setSubTotal(formatToRupiah(newSubTotal))
 
+    let newTotal = countSubtotal(productOrders)
+    setTotal(formatToRupiah(newTotal))
   }, [productOrders])
 
 
@@ -44,7 +49,7 @@ function product_bils({ productOrders, removeOrders, togglePaymentForm }) {
           <div className="bg-gray-300 py-4 px-6 rounded-lg">
             <div className="flex flex-row justify-between">
               <p className="">Subtotal</p>
-              <p className="">Rp.{subTotal}</p>
+              <p className="">{subTotal}</p>
             </div>
             <div className="flex flex-row justify-between">
               <p className="">Discount</p>
@@ -62,7 +67,7 @@ function product_bils({ productOrders, removeOrders, togglePaymentForm }) {
           <div className="bg-gray-300 py-4 px-6 rounded-lg">
             <div className="flex flex-row justify-between font-bold text-xl">
               <div className="">Total</div>
-              <div className="">Rp.{total}</div>
+              <div className="">{total}</div>
             </div>
           </div>
           <div className="button flex justify-center py-2 bg-purple-600 rounded-lg" onClick={togglePaymentForm}>

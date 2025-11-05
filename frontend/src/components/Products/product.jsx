@@ -1,6 +1,16 @@
+import { formatToRupiah } from "../../utils/currency";
 import { Link } from "react-router-dom";
 import { getImageUrl } from "../../api/image";
+import { useState, useEffect } from "react";
+
+
 export default function Product({ product, category, handleAddOrder }) {
+  const [sellingPrice, setSellingPrice] = useState(0)
+
+  useEffect(() => {
+    setSellingPrice(formatToRupiah(product.selling_price))
+  }, [product])
+
   return (
     <>
       <div className="flex flex-col gap-2 bg-white px-4 py-4 rounded-2xl">
@@ -18,7 +28,7 @@ export default function Product({ product, category, handleAddOrder }) {
           </div>
           <div className='flex flex-row justify-between'>
             <div>
-              <p className="font-bold">Rp. {product.selling_price}</p>
+              <p className="font-bold">{sellingPrice}</p>
               <p className="font-bold">Stock: {product.stock}</p>
             </div>
 
