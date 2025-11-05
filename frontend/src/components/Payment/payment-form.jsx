@@ -24,7 +24,7 @@ export default function PaymentForm({ productOrders, togglePaymentForm, handleTo
     const customerMoney = Number(e.target.value)
 
 
-    if (customerMoney >= total) {
+    if (customerMoney > total) {
       let changeAmount = customerMoney - total
       setChangeAmount(changeAmount)
       setStringChangeAmount(formatToRupiah(changeAmount))
@@ -56,7 +56,7 @@ export default function PaymentForm({ productOrders, togglePaymentForm, handleTo
         <div className="bg-gray-300 py-2 px-4 rounded-lg">
           <div className="flex flex-row justify-between font-bold text-xl">
             <div className="">Total</div>
-            <div className="">{stringTotal}</div>
+            <div className="">{total}</div>
           </div>
         </div>
         <div>
