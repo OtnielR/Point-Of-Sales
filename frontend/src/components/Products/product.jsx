@@ -5,7 +5,7 @@ export default function Product({ product, category, handleAddOrder }) {
         <div className="w-full h-38 overflow-hidden">
           <img
             src={`http://localhost:8080${product.image_url}`}
-            className="object-cover h-full rounded-lg"
+            className="object-cover h-full w-full rounded-lg"
             alt=""
           />
         </div>

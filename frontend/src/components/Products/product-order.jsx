@@ -17,7 +17,7 @@ export default function ProductOrder({ product }) {
     <div className="w-full flex flex-row gap-3">
       <div className="flex flex-row w-18 h-18 overflow-hidden">
         <img
-          className="w-full h-full object-cover  rounded-xl"
+          className="w-full h-full object-cover rounded-xl"
           src={`http://localhost:8080${product.image_url}`}
           alt=""
           draggable="false"

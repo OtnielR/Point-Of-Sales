@@ -11,7 +11,7 @@ export default function CategoryList({ category, onDelete }) {
         </p>
       </div>
       <div>
-        <button onClick={onDelete} className="bg-red-400 text-center rounded-full w-6 h-6">
+        <button onClick={onDelete} className="text-center rounded-full flex justify-center items-center text-2xl font-bold h-10 text-red-600">
           x
         </button>
       </div>
