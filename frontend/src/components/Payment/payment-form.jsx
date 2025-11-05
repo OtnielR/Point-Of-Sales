@@ -24,7 +24,7 @@ export default function PaymentForm({ productOrders, togglePaymentForm, handleTo
     const customerMoney = Number(e.target.value)
 
 
-    if (customerMoney > total) {
+    if (customerMoney >= total) {
       let changeAmount = customerMoney - total
       setChangeAmount(changeAmount)
       setStringChangeAmount(formatToRupiah(changeAmount))
