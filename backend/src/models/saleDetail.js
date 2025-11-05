@@ -9,6 +9,9 @@ export default class SaleDetail {
     async getById(id) {
         return this.db.get("SELECT * FROM sale_detail WHERE id = ?", [id])
     }
+    async getBySalesId(id) {
+        return this.db.all("SELECT * FROM sale_detail WHERE sales_id = ?", [id])
+    }
     async create({ sales_id, product_id, amount, total }) {
         const result = await this.db.run(
             "INSERT INTO sale_detail (sales_id, product_id, amount, total) VALUES ( ?, ?, ?, ?)",

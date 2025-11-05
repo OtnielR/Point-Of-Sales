@@ -21,8 +21,8 @@ export default function CategoryLists() {
 
   return (<>
     <div className="w-1/2 flex flex-col gap-4 px-8 py-8">
-      <div>
-        <p className="font-bold text-xl">Categories List</p>
+      <div className="bg-white">
+        <p className="font-bold text-xl py-2 px-6 ">Categories List</p>
       </div>
       <div className="flex flex-col gap-8">
         {categories.map(category => (

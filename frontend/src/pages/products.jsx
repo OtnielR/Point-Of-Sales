@@ -3,7 +3,7 @@ import ProductsForm from "../components/Products/products-form"
 
 export default function Products() {
   return (<>
-    <main className="flex flex-row gap-8">
+    <main className="flex flex-row gap-4">
       <Sidebar></Sidebar>
       <section className="flex flex-row w-11/12">
         <ProductsForm></ProductsForm>

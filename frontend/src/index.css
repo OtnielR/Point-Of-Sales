@@ -1,3 +1,22 @@
 body {
   background-color: #efefef;
 }
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  .receipt, .receipt * {
+    width: 100%;
+    visibility: visible;
+  }
+  .receipt {
+    margin: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+  .receipt-buttons{
+    visibility: hidden;
+  }
+}

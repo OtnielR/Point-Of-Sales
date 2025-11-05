@@ -23,6 +23,17 @@ export const saleDetailController = (db) => {
                 next(err)
             }
         },
+        getBySalesId: async (req, res, next) => {
+            try {
+                const saleDetail = await saleDetailModel.getBySalesId(req.params.id)
+                if (!saleDetail) {
+                    return res.status(404).json({ message: "Sales not found" })
+                }
+                res.json(saleDetail)
+            } catch (err) {
+                next(err)
+            }
+        },
         create: async (req, res, next) => {
             try {
                 const newSaleDetail = await saleDetailModel.create(req.body);

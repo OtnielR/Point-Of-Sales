@@ -4,7 +4,7 @@ import CategoryLists from "../components/Categories/category-lists"
 
 export default function Category() {
   return (<>
-    <main className="flex flex-row gap-8">
+    <main className="flex flex-row gap-4">
       <Sidebar></Sidebar>
       <section className="flex flex-row w-11/12">
         <CategoryForm></CategoryForm>

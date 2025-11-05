@@ -2,7 +2,11 @@ import api from "./axios"
 
 export async function getCategories() {
     const response = await api.get('/api/categories')
-    console.log(response.data)
+    return response.data
+}
+
+export async function getCategory(id) {
+    const response = await api.get(`/api/categories/${id}`)
     return response.data
 }
 
@@ -12,7 +16,6 @@ export async function postCategory(name, description) {
             name,
             description
         });
-        console.log(res.data);
 
         return true
     } catch (err) {
@@ -24,7 +27,6 @@ export async function postCategory(name, description) {
 export async function deleteCategory(id) {
     try {
         const res = await api.delete(`/api/categories/${id}`);
-        console.log(res.data);
 
         return true
     } catch (err) {
