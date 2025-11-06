@@ -15,9 +15,9 @@ export default function PaymentList({ product, index }) {
   }, [product])
 
   return (<>
-    <div className="flex flex-row gap-4">
-      <div>
-        <p>{index}</p>
+    <div className="flex flex-row gap-8">
+      <div className="flex justify-center items-center">
+        <p className="flex font-bold text-lg" >{index}</p>
       </div>
       <div className="flex flex-row gap-4">
         <div className="w-20 h-20 overflow-hidden">
@@ -30,11 +30,11 @@ export default function PaymentList({ product, index }) {
         <div className="h-full flex flex-col justify-between py-2">
           <p>{product.name}</p>
 
-          <div className="w-full flex flex-row justify-between gap-8">
+          <div className="w-full flex flex-row justify-between gap-6">
 
             <div className="flex flex-row gap-4">
 
-              <p>{sellingPrice}</p>
+              <p >{sellingPrice}</p>
               <p>Amount: {product.amount}</p>
 
             </div>

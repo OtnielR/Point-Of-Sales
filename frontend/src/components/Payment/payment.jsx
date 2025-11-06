@@ -25,15 +25,22 @@ export default function Payment({ showPayment, togglePaymentForm, productOrders 
         <div className="w-full h-full flex justify-center items-center">
 
           <TransparentBlackBackground></TransparentBlackBackground>
-          <div className="w-9/12 px-8 py-8 rounded-lg z-80 bg-white">
-            <div className="flex flex-row justify-between">
-              <div className="">
+          <div className="w-9/12 px-8 py-8 rounded-lg z-80">
+
+            <div className="flex flex-row gap-5">
+
+            <div className="bg-white p-8 rounded-lg">
+
+              <div className="font-bold text-xl">
                 <p>Payment Form</p>
               </div>
-            </div>
-            <div className="flex flex-row gap-6">
               <PaymentLists productOrders={productOrders}></PaymentLists>
+            </div>
+
+            <div className="bg-white p-8 rounded-lg">
               <PaymentForm productOrders={productOrders} togglePaymentForm={togglePaymentForm} handleToggleReceipt={handleToggleReceipt}></PaymentForm>
+
+            </div>
             </div>
           </div>
 

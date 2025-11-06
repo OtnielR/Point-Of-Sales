@@ -48,30 +48,30 @@ export default function PaymentForm({ productOrders, togglePaymentForm, handleTo
   }
 
   return (<>
-    <div className="w-1/3 px-4">
+    <div className="flex flex-col gap-2 px-4 ">
       <div>
-        <p>Payment Detail</p>
+        <p className="font-bold text-2xl">Payment Detail</p>
       </div>
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-5">
         <div className="bg-gray-300 py-2 px-4 rounded-lg">
           <div className="flex flex-row justify-between font-bold text-xl">
             <div className="">Total</div>
-            <div className="">{stringTotal}</div>
+            <div className="">: {stringTotal}</div>
           </div>
         </div>
-        <div>
-          <label htmlFor="">Customer Money</label>
-          <input className="border" type="text" onChange={handleChangeAmountInput} ref={customerMoneyRef} />
+        <div className="flex gap-4 items-center">
+          <label htmlFor="" className="font-semibold text-lg" >Customer Money</label>
+          <input className="border rounded-lg mx-auto p-2 text-lg text-center " type="text" onChange={handleChangeAmountInput} ref={customerMoneyRef} />
         </div>
         <div className="bg-gray-300 py-2 px-4 rounded-lg">
-          <div className="flex flex-row justify-between font-bold text-xl">
+          <div className="flex flex-row justify-between font-semibold text-lg">
             <div className="">Change Amount</div>
-            <div className="">{stringChangeAmount}</div>
+            <div className="">: {stringChangeAmount}</div>
           </div>
         </div>
         <div className="w-full flex flex-row gap-4">
-          <button className="w-1/2 bg-purple-600 text-white" onClick={completedPayment}>Completed</button>
-          <button className="w-1/2 bg-red-500 text-white" onClick={togglePaymentForm}>Cancel</button>
+          <button className="w-1/2 bg-purple-600 text-white rounded-lg p-2" onClick={completedPayment}>Completed</button>
+          <button className="w-1/2 bg-red-500 text-white rounded-lg p-2" onClick={togglePaymentForm}>Cancel</button>
         </div>
       </div>
     </div>

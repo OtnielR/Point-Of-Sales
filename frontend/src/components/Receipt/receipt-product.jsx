@@ -18,7 +18,7 @@ export default function ReceiptProduct({ product }) {
         <p>{product.name}</p>
       </div>
       <div className="w-full flex flex-row justify-between">
-        <p>{product.amount} X {sellingPrice}</p>
+        <p>{product.amount} x {sellingPrice}</p>
         <p>{totalPrice}</p>
       </div>
     </div>
