@@ -11,6 +11,17 @@ export async function getProduct(id) {
     return response.data
 }
 
+export async function deleteProduct(id) {
+    try {
+        const res = await api.delete(`/api/products/${id}`);
+
+        return true
+    } catch (err) {
+        console.error(err);
+        return false
+    }
+}
+
 export async function postProducts(name, categoryId, costPrice, sellingPrice, stock, image) {
     const formData = new FormData();
 
