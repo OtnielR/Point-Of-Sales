@@ -2,9 +2,9 @@ import SalesProduct from "./sales-product"
 
 export default function SalesProducts({ products, saleDetails }) {
   return (<>
-    <div className="w-full">
+    <div className="w-full flex flex-col gap-6">
       <div>
-        <p>Products Detail</p>
+        <p className="font-bold text-lg">Products Detail</p>
       </div>
       <div className="flex flex-col gap-4">
         {saleDetails.map((det, index) => {

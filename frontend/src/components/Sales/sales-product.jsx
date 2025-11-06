@@ -18,17 +18,17 @@ export default function SalesProduct({ product, amount, index }) {
           className="w-full h-full object-cover rounded-xl"
           alt="" />
       </div>
-      <div className="flex flex-col flex-1 justify-between py-2">
-        <div className="flex flex-row justify-between gap-4">
-          <p>{product.name}</p>
-          <p>Amount: {amount}</p>
+      <div className="flex flex-col flex-1 justify-between ">
+        <div className="flex flex-row justify-between">
+          <p className="font-bold text-lg">{product.name}</p>
         </div>
         <div className="flex flex-row justify-between">
-          <div className=" justify-between gap-4">
+          <div className="flex flex-col justify-between ">
             <p>Cost Price: {product.cost_price}</p>
             <p>Selling Price: {product.selling_price}</p>
           </div>
           <div>
+          <p>Amount: {amount}</p>
             <p>Subtotal: {subTotal}</p>
           </div>
         </div>

@@ -60,7 +60,7 @@ export default function SalesInfo({ sale, user, saleDetail, products, index }) {
     </div>
     <div className="w-full flex flex-col gap-8">
       <div>
-        <p>Sales Info</p>
+        <p className="font-bold text-xl">Sales Info</p>
       </div>
       <div>
         <div className="w-full flex flex-row justify-between">
@@ -69,7 +69,7 @@ export default function SalesInfo({ sale, user, saleDetail, products, index }) {
         </div>
       </div>
       <div className="flex flex-row gap-8">
-        <div className="w-full flex flex-col gap-3">
+        <div className="w-full flex flex-col gap-4">
           <div className="flex flex-row justify-between">
             <p>Total Amount: </p>
             <p className="w-1/4">{totalAmount}</p>

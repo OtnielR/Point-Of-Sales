@@ -31,11 +31,11 @@ export default function SalesDetail({ id }) {
 
   return (<>
     <div className="w-full px-16 py-16">
-      <div className="flex flex-row gap-4 bg-white px-6 py-6">
-        <div className="w-1/2">
+      <div className="flex flex-row gap-5 px-6 py-6">
+        <div className="w-1/2 bg-white py-10 px-10 rounded-lg shadow-xl">
           <SalesInfo user={user} sale={sale} products={products} saleDetail={saleDetails}></SalesInfo>
         </div>
-        <div className="w-1/2">
+        <div className="w-1/2 bg-white py-10 px-10 rounded-lg shadow-xl">
           <SalesProducts products={products} saleDetails={saleDetails}></SalesProducts>
         </div>
       </div>
