@@ -76,7 +76,7 @@ export default function Receipt({ saleId, togglePaymentForm, handleToggleReceipt
             </div>
             <hr />
             <div className="flex flex-col gap-2">
-              {productOrders.map((order) => <ReceiptProduct key={order.id} product={order} key={productOrders.id}></ReceiptProduct>)
+              {productOrders.map((order) => <ReceiptProduct key={order.id} product={order} ></ReceiptProduct>)
               }
             </div>
             <hr />
