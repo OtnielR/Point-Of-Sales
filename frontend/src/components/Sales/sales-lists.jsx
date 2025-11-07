@@ -65,7 +65,7 @@ export default function SalesLists() {
       <div className="flex flex-col gap-6">
         <SalesHeader handleChangeDate={handleChangeDate}></SalesHeader>
         <div className="flex flex-col gap-6">
-          <div className="flex flex-row  items-center px-4 py-2 w-full bg-white">
+          <div className="flex flex-row  items-center px-4 py-2 w-full bg-white rounded-lg font-bold">
             <div className="w-1/10">
               <p>Id</p>
             </div >

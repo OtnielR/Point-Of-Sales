@@ -1,14 +1,12 @@
 export default function CategoryList({ category, onDelete }) {
   console.log(category);
+
   return (
-    <>
-     <div className="w-full">
-      <div className="bg-white shadow-md rounded-xl w-full flex items-center justify-between p-4 min-h-[90px] border border-gray-100">
-        <div className="w-3/4">
+    <div className="w-full">
+      <div className="bg-white shadow-lg rounded-xl w-full flex items-center justify-between p-4 border border-gray-100">
+        <div>
           <p className="font-bold text-lg text-gray-800">{category.name}</p>
-          <p className="text-sm text-gray-600 break-words mt-1">
-            {category.description}
-          </p>
+          <p className="text-sm text-gray-600">{category.description}</p>
         </div>
 
         <button
@@ -19,6 +17,5 @@ export default function CategoryList({ category, onDelete }) {
         </button>
       </div>
     </div>
-    </>
   );
 }

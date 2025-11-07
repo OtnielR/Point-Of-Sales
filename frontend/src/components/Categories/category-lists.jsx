@@ -27,7 +27,7 @@ export default function CategoryLists() {
           Categories List
         </p>
 
-        <div className="flex flex-col gap-3 max-h-[72vh] overflow-y-auto pr-1">
+        <div className="flex flex-col gap-3 max-h-[72vh] overflow-y-auto py-3">
           {categories.length > 0 ? (
             categories.map(category => (
               <CategoryList

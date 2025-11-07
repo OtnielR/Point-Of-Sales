@@ -13,10 +13,10 @@ export default function ProductsHeader({
   const [isShowCategories, setIsShowCategories] = useState(false);
   const [isShowFilter, setIsShowFilter] = useState(false);
   const selectCategoryRef = useRef();
-  const [currentCategory, setCurrentCategory] = useState("General")
+  const [currentCategory, setCurrentCategory] = useState("General");
 
-  const minPriceInputRef = useRef()
-  const maxPriceInputRef = useRef()
+  const minPriceInputRef = useRef();
+  const maxPriceInputRef = useRef();
 
   const toggleShowCategories = () => {
     setIsShowCategories(!isShowCategories);
@@ -27,25 +27,24 @@ export default function ProductsHeader({
   };
 
   const handlePriceChange = () => {
-    let minPrice = minPriceInputRef.current.value
-    let maxPrice = maxPriceInputRef.current.value
+    let minPrice = minPriceInputRef.current.value;
+    let maxPrice = maxPriceInputRef.current.value;
 
-    handlePriceFilter(minPrice, maxPrice)
-  }
+    handlePriceFilter(minPrice, maxPrice);
+  };
 
   const handleCategoryChange = (e) => {
-    let category = e.target.value
+    let category = e.target.value;
 
     if (category == "") {
-      setCurrentCategory("General")
+      setCurrentCategory("General");
     } else {
-      setCurrentCategory(category)
+      setCurrentCategory(category);
     }
 
-    toggleShowCategories()
-    handleSelectChange(e)
-
-  }
+    toggleShowCategories();
+    handleSelectChange(e);
+  };
 
   return (
     <>
@@ -54,27 +53,53 @@ export default function ProductsHeader({
         <div className="flex flex-row justify-between items-center gap-48">
           <div className="relative flex flex-row items-center">
             <div className=" flex flex-row gap-4 items-center">
-              <div className="w-32 text-2xl cursor-pointer font-bold" onClick={toggleShowCategories}>
+              <div
+                className="w-32 text-2xl cursor-pointer font-bold"
+                onClick={toggleShowCategories}
+              >
                 <p className="pointer">{currentCategory}</p>
               </div>
               <div className="">
                 <img
-                  className={`h-8 transition-transform ${isShowCategories ? "rotate-180" : "rotate-0"
-                    }`}
+                  className={`h-8 transition-transform ${
+                    isShowCategories ? "rotate-180" : "rotate-0"
+                  }`}
                   src="down-arrow.png"
                   alt=""
                 />
               </div>
             </div>
-            <div className={`w-full bg-white rounded-lg absolute top-10 left-0 shadow-xl ${isShowCategories ? "block" : "hidden"}`}>
+            <div
+              className={`w-full bg-white rounded-lg absolute top-10 left-0 shadow-xl ${
+                isShowCategories ? "block" : "hidden"
+              }`}
+            >
               <div className={"flex flex-col"}>
-                <button className="hover:bg-gray-200 rounded-t-lg py-2" onClick={handleCategoryChange} value="">General</button>
+                <button
+                  className="hover:bg-gray-200 rounded-t-lg py-2"
+                  onClick={handleCategoryChange}
+                  value=""
+                >
+                  General
+                </button>
 
                 {categories.map((category, index) => {
-                  return <button className={`hover:bg-gray-200 py-2 ${((index + 1) == categories.length) ? "rounded-b-lg" : "rounded-none"}`} onClick={handleCategoryChange} value={category.name} key={category.id}>{category.name}</button>
+                  return (
+                    <button
+                      className={`hover:bg-gray-200 py-2 ${
+                        index + 1 == categories.length
+                          ? "rounded-b-lg"
+                          : "rounded-none"
+                      }`}
+                      onClick={handleCategoryChange}
+                      value={category.name}
+                      key={category.id}
+                    >
+                      {category.name}
+                    </button>
+                  );
                 })}
               </div>
-
             </div>
           </div>
           <div className="flex flex-row flex-1 items-center gap-4">
@@ -114,20 +139,19 @@ export default function ProductsHeader({
                 onClick={toggleShowFilter}
               />
               <div
-                className={`w-110 absolute bg-white px-4 py-4 z-50 shadow-xl rounded-lg translate-y-4 ${isShowFilter ? "block" : "hidden"
-                  }`}
+                className={`w-110 absolute bg-white px-4 py-4 z-50 shadow-xl rounded-lg translate-y-4 ${
+                  isShowFilter ? "block" : "hidden"
+                }`}
                 style={{ transform: "translateX(-50%)" }}
               >
-                <div>
-                  <div className="w-full flex flex-row jusfity-center">
-                    <p className="w-full text-center font-bold">
+                <div className="flex flex-col gap-4">
+                  <div className="w-full flex flex-row jusfity-between items-center">
+                    <p className="w-full font-bold ">
                       Filter Products
                     </p>
-                  </div>
-                  <div>
                     <div>
                       <button
-                        className="border px-4 py-2 rounded-lg"
+                        className="border border-purple-600 bg-purple-500 px-4 py-1 rounded-lg text-white"
                         onClick={handleResetFilter}
                       >
                         Reset
@@ -135,15 +159,25 @@ export default function ProductsHeader({
                     </div>
                   </div>
                   <div>
-                    <div>Prices</div>
+                    <div className="font-semibold">Prices</div>
                     <div className="grid grid-cols-2 gap-2">
                       <div className="flex flex-col">
                         <label htmlFor="">Min Price</label>
-                        <input type="number" className="border" ref={minPriceInputRef} onChange={handlePriceChange} />
+                        <input
+                          type="number"
+                          className="border-b-2 text-center outline-none pt-4"
+                          ref={minPriceInputRef}
+                          onChange={handlePriceChange}
+                        />
                       </div>
                       <div>
                         <label htmlFor="">Max Price</label>
-                        <input type="number" className="border" ref={maxPriceInputRef} onChange={handlePriceChange} />
+                        <input
+                          type="number"
+                          className="border-b-2 text-center outline-none pt-4"
+                          ref={maxPriceInputRef}
+                          onChange={handlePriceChange}
+                        />
                       </div>
                     </div>
                   </div>
@@ -154,15 +188,15 @@ export default function ProductsHeader({
                   </div>
                   <div>
                     <p>Name</p>
-                    <p className="flex flex-row gap-2">
+                    <p className="flex flex-row gap-2 justify-center">
                       <button
-                        className="w-1/4 border px-4"
+                        className="w-full border px-4 rounded-md text-white bg-black"
                         onClick={() => handleSortByName(true)}
                       >
                         Ascending
                       </button>
                       <button
-                        className="w-1/4 border px-4"
+                        className="w-full border px-4 rounded-md text-white bg-black"
                         onClick={() => handleSortByName(false)}
                       >
                         Descending
@@ -173,13 +207,13 @@ export default function ProductsHeader({
                     <p>Price</p>
                     <p className="flex flex-row gap-2">
                       <button
-                        className="w-1/4 border px-4"
+                        className="w-full border px-4 rounded-md text-white bg-black"
                         onClick={() => handleSortByPrice(true)}
                       >
                         Ascending
                       </button>
                       <button
-                        className="w-1/4 border px-4"
+                        className="w-full border px-4 rounded-md text-white bg-black"
                         onClick={() => handleSortByPrice(false)}
                       >
                         Descending
@@ -190,13 +224,13 @@ export default function ProductsHeader({
                     <p>Stock</p>
                     <p className="flex flex-row gap-2">
                       <button
-                        className="w-1/4 border px-4"
+                        className="w-full border px-4 rounded-md text-white bg-black"
                         onClick={() => handleSortByStock(true)}
                       >
                         Ascending
                       </button>
                       <button
-                        className="w-1/4 border px-4"
+                        className="w-full border px-4 rounded-md text-white bg-black"
                         onClick={() => handleSortByStock(false)}
                       >
                         Descending
@@ -208,7 +242,7 @@ export default function ProductsHeader({
             </div>
           </div>
         </div>
-      </div >
+      </div>
     </>
   );
 }

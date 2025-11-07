@@ -36,7 +36,7 @@ export default function SalesList({ sale, user, saleDetail, products, index }) {
 
   return (<>
     <Link to={`/sale/${sale.id}`}>
-      <div className="flex flex-row h-14 transition-transform hover:scale-102 items-center px-4 py-2 w-full bg-white">
+      <div className="flex flex-row h-14 transition-transform hover:scale-102 items-center px-4 py-2 w-full bg-white rounded-lg shadow-lg">
         <div className="w-1/10">
           <p>#{sale.id}</p>
         </div >
