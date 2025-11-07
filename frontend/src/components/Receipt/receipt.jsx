@@ -1,44 +1,49 @@
-import { useEffect, useState } from "react"
-import { getSale } from "../../api/sales"
-import { getUser } from "../../api/users"
-import { getSaleDetailBySalesId } from "../../api/sale-detail"
-import { formatDate } from "../../utils/date"
-import { countSubtotal } from "../../utils/countBills"
-import { formatToRupiah } from "../../utils/currency"
-import ReceiptProduct from "./receipt-product"
+import { useEffect, useState } from "react";
+import { getSale } from "../../api/sales";
+import { getUser } from "../../api/users";
+import { getSaleDetailBySalesId } from "../../api/sale-detail";
+import { formatDate } from "../../utils/date";
+import { countSubtotal } from "../../utils/countBills";
+import { formatToRupiah } from "../../utils/currency";
+import ReceiptProduct from "./receipt-product";
 
-export default function Receipt({ saleId, togglePaymentForm, handleToggleReceipt, productOrders }) {
-  const [sale, setSale] = useState([])
-  const [saleDate, setSaleDate] = useState("")
-  const [user, setUser] = useState([])
-  const [subTotal, setSubTotal] = useState(0)
-  const [total, setTotal] = useState(0)
-  const [paidAmount, setPaidAmount] = useState(0)
-  const [changeAmount, setChangeAmount] = useState(0)
+export default function Receipt({
+  saleId,
+  togglePaymentForm,
+  handleToggleReceipt,
+  productOrders,
+}) {
+  const [sale, setSale] = useState([]);
+  const [saleDate, setSaleDate] = useState("");
+  const [user, setUser] = useState([]);
+  const [subTotal, setSubTotal] = useState(0);
+  const [total, setTotal] = useState(0);
+  const [paidAmount, setPaidAmount] = useState(0);
+  const [changeAmount, setChangeAmount] = useState(0);
 
   useEffect(() => {
     const fetchData = async () => {
-      const saleData = await getSale(saleId)
-      const userData = await getUser(saleData.user_id)
-      const saleDetailData = await getSaleDetailBySalesId(saleId)
+      const saleData = await getSale(saleId);
+      const userData = await getUser(saleData.user_id);
+      const saleDetailData = await getSaleDetailBySalesId(saleId);
 
-      setSale(saleData)
-      setUser(userData)
-      setSaleDate(formatDate(saleData.created_at))
+      setSale(saleData);
+      setUser(userData);
+      setSaleDate(formatDate(saleData.created_at));
 
-      const subtotal = countSubtotal(productOrders)
-      setSubTotal(formatToRupiah(subtotal))
-      setTotal(formatToRupiah(subtotal))
-      setPaidAmount(formatToRupiah(saleData.paid_amount))
-      setChangeAmount(formatToRupiah(saleData.change_amount))
-    }
+      const subtotal = countSubtotal(productOrders);
+      setSubTotal(formatToRupiah(subtotal));
+      setTotal(formatToRupiah(subtotal));
+      setPaidAmount(formatToRupiah(saleData.paid_amount));
+      setChangeAmount(formatToRupiah(saleData.change_amount));
+    };
 
-    fetchData()
-  }, [saleId, productOrders])
+    fetchData();
+  }, [saleId, productOrders]);
 
   const handlePrint = () => {
-    const printContent = document.getElementById("receipt-print").innerHTML
-    const printWindow = window.open("", "_blank")
+    const printContent = document.getElementById("receipt-print").innerHTML;
+    const printWindow = window.open("", "_blank");
     printWindow.document.write(`
       <html>
         <head>
@@ -75,15 +80,15 @@ export default function Receipt({ saleId, togglePaymentForm, handleToggleReceipt
           <div class="receipt-container">${printContent}</div>
         </body>
       </html>
-    `)
-    printWindow.document.close()
-    printWindow.print()
-  }
+    `);
+    printWindow.document.close();
+    printWindow.print();
+  };
 
   const handleCancel = () => {
-    handleToggleReceipt(0)
-    togglePaymentForm()
-  }
+    handleToggleReceipt(0);
+    togglePaymentForm();
+  };
 
   return (
     <>
@@ -113,15 +118,29 @@ export default function Receipt({ saleId, togglePaymentForm, handleToggleReceipt
             <hr className="border-dashed border-gray-400 my-2" />
 
             <div className="text-sm space-y-1">
-              <div className="flex justify-between"><span>Sub Total</span><span>{subTotal}</span></div>
-              <div className="flex justify-between font-semibold"><span>Total</span><span>{total}</span></div>
-              <div className="flex justify-between"><span>Bayar (Cash)</span><span>{paidAmount}</span></div>
-              <div className="flex justify-between"><span>Kembalian</span><span>{changeAmount}</span></div>
+              <div className="flex justify-between">
+                <span>Sub Total</span>
+                <span>{subTotal}</span>
+              </div>
+              <div className="flex justify-between font-semibold">
+                <span>Total</span>
+                <span>{total}</span>
+              </div>
+              <div className="flex justify-between">
+                <span>Bayar (Cash)</span>
+                <span>{paidAmount}</span>
+              </div>
+              <div className="flex justify-between">
+                <span>Kembalian</span>
+                <span>{changeAmount}</span>
+              </div>
             </div>
 
             <hr className="border-dashed border-gray-400 my-2" />
 
-            <p className="text-center text-xs text-gray-500 mt-2">Terima kasih telah berbelanja!</p>
+            <p className="text-center text-xs text-gray-500 mt-2">
+              Terima kasih telah berbelanja!
+            </p>
           </div>
 
           <div className="mt-6 flex gap-4">
@@ -141,5 +160,5 @@ export default function Receipt({ saleId, togglePaymentForm, handleToggleReceipt
         </div>
       </div>
     </>
-  )
+  );
 }

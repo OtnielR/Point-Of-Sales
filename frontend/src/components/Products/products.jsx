@@ -44,6 +44,7 @@ export default function Products() {
 
   const handleSelectChange = (e) => {
     const currentSelectValue = e.target.value
+    console.log(currentSelectValue)
 
     setSelectValue(currentSelectValue)
 
@@ -76,16 +77,9 @@ export default function Products() {
   }
 
   const handlePriceFilter = (minPrice, maxPrice) => {
-    setProducts((prev) => [...prev, ...priceFilteredProducts])
+    setProducts(unFilteredProducts)
 
-    const currentProducts = [...products, ...priceFilteredProducts]
-
-    const currentPriceFilteredProducts = currentProducts.filter(prod => prod.selling_price <= minPrice || prod.selling_price >= maxPrice)
-
-    setPriceFilteredProducts(currentPriceFilteredProducts)
-
-    setProducts(currentProducts.filter(prod => prod.selling_price >= minPrice && prod.selling_price <= maxPrice))
-
+    setProducts(prev => prev.filter(prod => prod.selling_price >= minPrice && prod.selling_price <= maxPrice))
   }
 
   const handleResetFilter = () => {

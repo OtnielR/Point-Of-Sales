@@ -13,29 +13,10 @@ export default function ProductsHeader({
   const [isShowCategories, setIsShowCategories] = useState(false);
   const [isShowFilter, setIsShowFilter] = useState(false);
   const selectCategoryRef = useRef();
+  const [currentCategory, setCurrentCategory] = useState("General")
 
-  const priceFilteredButton = [
-    {
-      minPrice: 0,
-      maxPrice: 25_000,
-      text: "0 - 25K",
-    },
-    {
-      minPrice: 25_000,
-      maxPrice: 50_000,
-      text: "25K - 50K",
-    },
-    {
-      minPrice: 50_000,
-      maxPrice: 75_000,
-      text: "50K - 75K",
-    },
-    {
-      minPrice: 75_000,
-      maxPrice: 100_000,
-      text: "75K - 100K",
-    },
-  ];
+  const minPriceInputRef = useRef()
+  const maxPriceInputRef = useRef()
 
   const toggleShowCategories = () => {
     setIsShowCategories(!isShowCategories);
@@ -45,38 +26,55 @@ export default function ProductsHeader({
     setIsShowFilter(!isShowFilter);
   };
 
+  const handlePriceChange = () => {
+    let minPrice = minPriceInputRef.current.value
+    let maxPrice = maxPriceInputRef.current.value
+
+    handlePriceFilter(minPrice, maxPrice)
+  }
+
+  const handleCategoryChange = (e) => {
+    let category = e.target.value
+
+    if (category == "") {
+      setCurrentCategory("General")
+    } else {
+      setCurrentCategory(category)
+    }
+
+    toggleShowCategories()
+    handleSelectChange(e)
+
+  }
+
   return (
     <>
       <div className="pt-6">
         <p className="font-bold">Items</p>
         <div className="flex flex-row justify-between items-center gap-48">
-          <div className="flex flex-row items-center">
-            <div className="text-2xl font-bold" onClick={toggleShowCategories}>
-              <select
-                ref={selectCategoryRef}
-                onChange={handleSelectChange}
-                className="appearance-none outine-none focus:outline-none"
-                name=""
-                id=""
-              >
-                <option className="" value="">
-                  General
-                </option>
-                {categories.map((category) => (
-                  <option key={category.id} value={category.name}>
-                    {category.name}
-                  </option>
-                ))}
-              </select>
+          <div className="relative flex flex-row items-center">
+            <div className=" flex flex-row gap-4 items-center">
+              <div className="w-32 text-2xl cursor-pointer font-bold" onClick={toggleShowCategories}>
+                <p className="pointer">{currentCategory}</p>
+              </div>
+              <div className="">
+                <img
+                  className={`h-8 transition-transform ${isShowCategories ? "rotate-180" : "rotate-0"
+                    }`}
+                  src="down-arrow.png"
+                  alt=""
+                />
+              </div>
             </div>
-            <div className="">
-              <img
-                className={`h-8 transition-transform ${
-                  isShowCategories ? "rotate-180" : "rotate-0"
-                }`}
-                src="down-arrow.png"
-                alt=""
-              />
+            <div className={`w-full bg-white rounded-lg absolute top-10 left-0 shadow-xl ${isShowCategories ? "block" : "hidden"}`}>
+              <div className={"flex flex-col"}>
+                <button className="hover:bg-gray-200 rounded-t-lg py-2" onClick={handleCategoryChange} value="">General</button>
+
+                {categories.map((category, index) => {
+                  return <button className={`hover:bg-gray-200 py-2 ${((index + 1) == categories.length) ? "rounded-b-lg" : "rounded-none"}`} onClick={handleCategoryChange} value={category.name} key={category.id}>{category.name}</button>
+                })}
+              </div>
+
             </div>
           </div>
           <div className="flex flex-row flex-1 items-center gap-4">
@@ -116,9 +114,8 @@ export default function ProductsHeader({
                 onClick={toggleShowFilter}
               />
               <div
-                className={`w-110 absolute bg-white px-4 py-4 z-50 shadow-xl rounded-lg translate-y-4 ${
-                  isShowFilter ? "block" : "hidden"
-                }`}
+                className={`w-110 absolute bg-white px-4 py-4 z-50 shadow-xl rounded-lg translate-y-4 ${isShowFilter ? "block" : "hidden"
+                  }`}
                 style={{ transform: "translateX(-50%)" }}
               >
                 <div>
@@ -139,18 +136,15 @@ export default function ProductsHeader({
                   </div>
                   <div>
                     <div>Prices</div>
-                    <div className="flex flex-row gap-2">
-                      {priceFilteredButton.map((button, index) => (
-                        <button
-                          onClick={() =>
-                            handlePriceFilter(button.minPrice, button.maxPrice)
-                          }
-                          className="border w-1/4 bg-black text-white rounded-2xl text-center"
-                          key={index}
-                        >
-                          {button.text}
-                        </button>
-                      ))}
+                    <div className="grid grid-cols-2 gap-2">
+                      <div className="flex flex-col">
+                        <label htmlFor="">Min Price</label>
+                        <input type="number" className="border" ref={minPriceInputRef} onChange={handlePriceChange} />
+                      </div>
+                      <div>
+                        <label htmlFor="">Max Price</label>
+                        <input type="number" className="border" ref={maxPriceInputRef} onChange={handlePriceChange} />
+                      </div>
                     </div>
                   </div>
                   <div className="w-full flex flex-row jusfity-center">
@@ -214,7 +208,7 @@ export default function ProductsHeader({
             </div>
           </div>
         </div>
-      </div>
+      </div >
     </>
   );
 }

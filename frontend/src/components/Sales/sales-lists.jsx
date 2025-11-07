@@ -32,19 +32,32 @@ export default function SalesLists() {
     fetchData()
   }, [])
 
-  const handleChangeDate = (date) => {
-    filterSalesByDate(date)
+  const handleChangeDate = (fromDate, toDate) => {
+    filterSalesByDate(fromDate, toDate)
   }
 
-  const filterSalesByDate = (date) => {
-    console.log("Filtered Sales:", date)
-    setSales(unFilteredSales)
+  const filterSalesByDate = (fromDate, toDate) => {
+    console.log("From Date:", fromDate)
+    console.log("To Date:", toDate)
 
-    if (date == "") {
-      return
+    if (!fromDate, !toDate) {
+      setSales(unFilteredSales)
     }
 
-    setSales(prev => prev.filter(sale => sale.created_at.split(" ")[0] === date))
+    setSales(
+      unFilteredSales.filter((sale) => {
+        const saleDate = sale.created_at.split(" ")[0]
+
+        if (fromDate && toDate) {
+          return saleDate >= fromDate && saleDate <= toDate
+        } else if (fromDate) {
+          return saleDate >= fromDate
+        } else if (toDate) {
+          return saleDate <= toDate
+        }
+      }
+      )
+    )
   }
 
   return (<>
