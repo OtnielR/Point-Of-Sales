@@ -98,7 +98,7 @@ export default function SalesInfo({ sale, user, saleDetail, products, index }) {
 
       </div>
       <div className="flex justify-center">
-        <button className="w-1/2 bg-black text-white text-center px-2 py-2" onClick={handleToggleReceipt}>Print Receipt</button>
+        <button className="w-1/2 bg-black text-white text-center px-2 py-2 rounded-lg" onClick={handleToggleReceipt}>Print Receipt</button>
       </div>
 
     </div>
