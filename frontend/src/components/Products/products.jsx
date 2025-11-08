@@ -5,12 +5,14 @@ import Product from "./product";
 import Bills from './product_bils'
 import Header from "./products-header";
 import Payment from "../Payment/payment";
+import { getUser } from "../../api/users";
 
 export default function Products() {
   const [products, setProducts] = useState([]);
   const [unFilteredProducts, setUnFilteredProducts] = useState([])
   const [categories, setCategories] = useState([]);
   const [productOrders, setProductOrders] = useState([])
+  const [user, setUser] = useState([])
   const [searchInput, setSearchInput] = useState("")
   const [selectValue, setSelectValue] = useState("")
   const [showPayment, setShowPayment] = useState(false)
@@ -19,12 +21,17 @@ export default function Products() {
   useEffect(() => {
     async function fetchData() {
       try {
+        const userId = localStorage.getItem("userId")
+
         const products = await getProducts();
         const categories = await getCategories();
+        const users = await getUser(userId)
+
 
         setProducts(products);
         setUnFilteredProducts(products)
         setCategories(categories)
+        setUser(users)
 
       } catch (err) {
         console.log(err);
@@ -151,7 +158,7 @@ export default function Products() {
 
   return (
     <>
-      <Payment showPayment={showPayment} togglePaymentForm={togglePaymentForm} productOrders={productOrders}></Payment>
+      <Payment user={user} showPayment={showPayment} togglePaymentForm={togglePaymentForm} productOrders={productOrders}></Payment>
       <div className="flex flex-row flex-1 h-screen">
         <div className="flex flex-col flex-1 w-2/3 gap-4 h-screen">
           <Header
@@ -173,7 +180,7 @@ export default function Products() {
             </div>
           </div>
         </div>
-        <Bills productOrders={productOrders} removeOrders={removeOrders} togglePaymentForm={togglePaymentForm}></Bills>
+        <Bills user={user} productOrders={productOrders} removeOrders={removeOrders} togglePaymentForm={togglePaymentForm}></Bills>
       </div>
     </>
   );

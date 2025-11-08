@@ -61,18 +61,16 @@ export default function ProductsHeader({
               </div>
               <div className="">
                 <img
-                  className={`h-8 transition-transform ${
-                    isShowCategories ? "rotate-180" : "rotate-0"
-                  }`}
+                  className={`h-8 transition-transform ${isShowCategories ? "rotate-180" : "rotate-0"
+                    }`}
                   src="down-arrow.png"
                   alt=""
                 />
               </div>
             </div>
             <div
-              className={`w-full bg-white rounded-lg absolute top-10 left-0 shadow-xl ${
-                isShowCategories ? "block" : "hidden"
-              }`}
+              className={`w-full bg-white rounded-lg absolute top-10 left-0 shadow-xl ${isShowCategories ? "block" : "hidden"
+                }`}
             >
               <div className={"flex flex-col"}>
                 <button
@@ -86,11 +84,10 @@ export default function ProductsHeader({
                 {categories.map((category, index) => {
                   return (
                     <button
-                      className={`hover:bg-gray-200 py-2 ${
-                        index + 1 == categories.length
-                          ? "rounded-b-lg"
-                          : "rounded-none"
-                      }`}
+                      className={`hover:bg-gray-200 py-2 ${index + 1 == categories.length
+                        ? "rounded-b-lg"
+                        : "rounded-none"
+                        }`}
                       onClick={handleCategoryChange}
                       value={category.name}
                       key={category.id}
@@ -135,9 +132,8 @@ export default function ProductsHeader({
                 onClick={toggleShowFilter}
               />
               <div
-                className={`w-110 absolute bg-white px-4 py-4 z-50 shadow-xl rounded-lg translate-y-4 ${
-                  isShowFilter ? "block" : "hidden"
-                }`}
+                className={`w-110 absolute bg-white px-4 py-4 z-50 shadow-xl rounded-lg translate-y-4 ${isShowFilter ? "block" : "hidden"
+                  }`}
                 style={{ transform: "translateX(-50%)" }}
               >
                 <div className="flex flex-col gap-4">
