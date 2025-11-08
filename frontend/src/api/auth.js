@@ -7,8 +7,11 @@ export async function login(username, password) {
             password
         });
 
-        localStorage.setItem("token", res.data.token)
-        localStorage.setItem("userId", res.data.user.id)
+        if (res.data.token && res.data.user) {
+            localStorage.setItem("token", res.data.token)
+            localStorage.setItem("userId", res.data.user.id)
+
+        }
 
         return res.data
     } catch (err) {
