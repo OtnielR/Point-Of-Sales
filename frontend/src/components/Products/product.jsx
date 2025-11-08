@@ -34,9 +34,9 @@ export default function Product({ product, category, handleAddOrder }) {
               <p className="font-bold">Stock: {product.stock}</p>
             </div>
 
-            <div className="flex items-center justify-center w-6 h-full  ">
-              <button onClick={() => handleAddOrder(product)} className="w-12 rounded-full text-white text-center">
-                <img src="plus.png" alt="" className="" />
+            <div className="flex justify-center items-center rounded-full hover:bg-green-100 p-2 transition">
+              <button onClick={() => handleAddOrder(product)} className="w-8 rounded-full text-white text-center">
+                <img src="plus.png" alt="" className="w-8" />
               </button>
             </div>
           </div>

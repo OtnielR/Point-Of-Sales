@@ -69,7 +69,7 @@ function product_bils({ productOrders, removeOrders, togglePaymentForm }) {
               <div className="">{total}</div>
             </div>
           </div>
-          <div className="button flex justify-center py-2 bg-purple-600 rounded-lg" onClick={togglePaymentForm}>
+          <div className="button flex justify-center py-2 bg-purple-600 hover:bg-purple-700 rounded-lg" onClick={togglePaymentForm}>
             <button className="text-white" >Continue</button>
           </div>
         </div>

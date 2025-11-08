@@ -30,7 +30,7 @@ export default function PaymentForm({ productOrders, togglePaymentForm, handleTo
       setStringChangeAmount(formatToRupiah(changeAmount))
     } else {
       setChangeAmount(NaN)
-      setStringChangeAmount("Not Enough Money")
+      setStringChangeAmount(" Not Enough Money ")
     }
   }
 
@@ -48,25 +48,25 @@ export default function PaymentForm({ productOrders, togglePaymentForm, handleTo
   }
 
   return (<>
-    <div className="flex flex-col gap-2 px-4 ">
+    <div className="w-full flex flex-col gap-8 items-center px-4 ">
       <div>
         <p className="font-bold text-2xl">Payment Detail</p>
       </div>
-      <div className="flex flex-col gap-5">
+      <div className="flex flex-col gap-8 justify-center">
         <div className="bg-gray-300 py-2 px-4 rounded-lg">
           <div className="flex flex-row justify-between font-bold text-xl">
             <div className="">Total</div>
             <div className="">: {stringTotal}</div>
           </div>
         </div>
-        <div className="flex gap-4 items-center">
-          <label htmlFor="" className="font-semibold text-lg" >Customer Money</label>
-          <input className="border rounded-lg mx-auto p-2 text-lg text-center " type="text" onChange={handleChangeAmountInput} ref={customerMoneyRef} />
+        <div className="flex flex-col gap-4 items-start">
+          <label htmlFor="" className="font-semibold text-md" >Customer Money</label>
+          <input className="w-full border rounded-lg p-2 text-lg text-center " type="text" onChange={handleChangeAmountInput} ref={customerMoneyRef} />
         </div>
         <div className="bg-gray-300 py-2 px-4 rounded-lg">
           <div className="flex flex-row justify-between font-semibold text-lg">
-            <div className="">Change Amount</div>
-            <div className="">: {stringChangeAmount}</div>
+            <div className="">Change Amount </div>
+            <div className=""> :  {stringChangeAmount}</div>
           </div>
         </div>
         <div className="w-full flex flex-row gap-4">
@@ -77,3 +77,4 @@ export default function PaymentForm({ productOrders, togglePaymentForm, handleTo
     </div>
   </>)
 }
+

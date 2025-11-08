@@ -52,9 +52,9 @@ export default function ProductsHeader({
         <p className="font-bold">Items</p>
         <div className="flex flex-row justify-between items-center gap-48">
           <div className="relative flex flex-row items-center">
-            <div className=" flex flex-row gap-4 items-center">
+            <div className=" flex flex-row items-center">
               <div
-                className="w-32 text-2xl cursor-pointer font-bold"
+                className="w-28 text-2xl cursor-pointer font-bold"
                 onClick={toggleShowCategories}
               >
                 <p className="pointer">{currentCategory}</p>
@@ -103,34 +103,30 @@ export default function ProductsHeader({
             </div>
           </div>
           <div className="flex flex-row flex-1 items-center gap-4">
-            <form className="flex-1">
-              <div className="relative">
-                <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                  <svg
-                    className="w-4 h-4 text-gray-500 "
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      stroke="currentColor"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
-                    />
-                  </svg>
-                </div>
-                <input
-                  type="search"
-                  id="search"
-                  onChange={handleSearchInput}
-                  className="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 outline-none "
-                  required
-                />
+            <div className="relative flex-1">
+              <input
+                type="text"
+                placeholder="Search product..."
+                onChange={handleSearchInput}
+                className="w-full pl-11 pr-4 py-3 text-sm border border-gray-300 rounded-lg bg-gray-50 text-gray-800 outline-none focus:ring-2 focus:ring-purple-400 focus:border-purple-400 placeholder:text-gray-400 transition-all"
+              />
+              <div className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="w-5 h-5"
+                  fill="none"
+                  viewBox="0 0 20 20"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
+                  />
+                </svg>
               </div>
-            </form>
+            </div>
             <div className="relative bg-grey-600">
               <img
                 className="w-8 transition-transform hover:scale-115"
@@ -146,9 +142,7 @@ export default function ProductsHeader({
               >
                 <div className="flex flex-col gap-4">
                   <div className="w-full flex flex-row jusfity-between items-center">
-                    <p className="w-full font-bold ">
-                      Filter Products
-                    </p>
+                    <p className="w-full font-bold ">Filter Products</p>
                     <div>
                       <button
                         className="border border-purple-600 bg-purple-500 px-4 py-1 rounded-lg text-white"
@@ -190,13 +184,13 @@ export default function ProductsHeader({
                     <p>Name</p>
                     <p className="flex flex-row gap-2 justify-center">
                       <button
-                        className="w-full border px-4 rounded-md text-white bg-black"
+                        className="w-full border px-4 rounded-md text-white bg-purple-500"
                         onClick={() => handleSortByName(true)}
                       >
                         Ascending
                       </button>
                       <button
-                        className="w-full border px-4 rounded-md text-white bg-black"
+                        className="w-full border px-4 rounded-md text-white bg-purple-500"
                         onClick={() => handleSortByName(false)}
                       >
                         Descending
@@ -207,13 +201,13 @@ export default function ProductsHeader({
                     <p>Price</p>
                     <p className="flex flex-row gap-2">
                       <button
-                        className="w-full border px-4 rounded-md text-white bg-black"
+                        className="w-full border px-4 rounded-md text-white bg-purple-500"
                         onClick={() => handleSortByPrice(true)}
                       >
                         Ascending
                       </button>
                       <button
-                        className="w-full border px-4 rounded-md text-white bg-black"
+                        className="w-full border px-4 rounded-md text-white bg-purple-500"
                         onClick={() => handleSortByPrice(false)}
                       >
                         Descending

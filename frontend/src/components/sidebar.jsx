@@ -1,48 +1,64 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 export default function Sidebar() {
+  const location = useLocation();
+
   const mainNav = [
-    { icon_url: "/home.png", link: "/" },
-    { icon_url: "/package.png", link: "/products" },
-    { icon_url: "/categories.png", link: "/categories" },
-    { icon_url: "/user.png", link: "/users" },
-    { icon_url: "/bar-chart.png", link: "/sales" },
+    { icon_url: "/home.png", link: "/", label: "Home" },
+    { icon_url: "/package.png", link: "/products", label: "Products" },
+    { icon_url: "/categories.png", link: "/categories", label: "Categories" },
+    { icon_url: "/user.png", link: "/users", label: "Users" },
+    { icon_url: "/bar-chart.png", link: "/sales", label: "Sales" },
   ];
+
   return (
-    <>
-      <div id="sidebar" className="w-28 h-screen px-6 py-6">
-        <div className="w-full h-full bg-white rounded-lg px-4 py-6">
-          <div className="h-full flex flex-col justify-between items-between gap-6 ">
-            <div className="w-full flex items-center justify-center">
-              <Link to="/" className="w-full">
+    <div className="h-screen w-28 p-4">
+      <div className="h-full w-full bg-white shadow-xl rounded-2xl flex flex-col justify-between items-center py-6 border border-gray-200">
+
+        <div className="w-full flex justify-center mt-2">
+          <Link to="/" className="w-16">
+            <img
+              src="/DGF MARKET.png"
+              alt="DGF Market"
+              className="w-full object-contain"
+            />
+          </Link>
+        </div>
+
+
+        <nav className="flex flex-col items-center gap-8">
+          {mainNav.map((nav) => {
+            const isActive = location.pathname === nav.link;
+            return (
+              <Link
+                key={nav.link}
+                to={nav.link}
+                className={`w-10 h-10 flex items-center justify-center rounded-xl transition-all duration-200 ${
+                  isActive
+                    ? "bg-purple-100 border-2 border-purple-500 shadow-md"
+                    : "hover:bg-gray-100"
+                }`}
+              >
                 <img
-                  src="/DGF MARKET.png"
-                  className="w-92 object-cover"
-                  alt=""
+                  src={nav.icon_url}
+                  alt={nav.label}
+                  className="w-6 h-6 object-contain"
                 />
               </Link>
-            </div>
-            <div className="h-1/2 flex flex-col gap-8 justify-center items-center">
-              {mainNav.map((nav) => {
-                return (
-                  <Link to={nav.link} className="w-full" key={nav.icon_url}>
-                    <img src={nav.icon_url} alt="" />
-                  </Link>
-                );
-              })}
-            </div>
-            <div className="w-8">
-              <Link to="/" className="w-full">
-                <img
-                  src="/logout.png"
-                  className="w-92 object-cover"
-                  alt=""
-                />
-              </Link>
-            </div>
-          </div>
+            );
+          })}
+        </nav>
+
+
+        <div className="mb-1">
+          <Link
+            to="/"
+            className="w-10 h-10 flex items-center justify-center rounded-xl hover:bg-red-50 transition-all duration-200"
+          >
+            <img src="/logout.png" alt="Logout" className="w-6 h-6" />
+          </Link>
         </div>
       </div>
-    </>
+    </div>
   );
 }

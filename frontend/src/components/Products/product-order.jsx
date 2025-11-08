@@ -52,17 +52,17 @@ export default function ProductOrder({ product, removeOrders, handleProductAmoun
           <h1 className="">{sellingPrice}</h1>
           <div className="button flex flex-row gap-4">
 
-            <div className="w-6 h-6 bg-white rounded-full">
+            <div className="flex justify-center items-center rounded-full hover:bg-red-100 p-2 transition">
               <button onClick={decreaseProductAmount} className="w-full text-white">
-                <img src="delete.png" alt="" className="" />
+                <img src="delete.png" alt="" className="w-5 h-5" />
               </button>
             </div>
 
-            <h1 className="font-bold">{productAmount}</h1>
+            <h1 className="font-bold flex text-center justify-center items-center">{productAmount}</h1>
 
-            <div className="w-6 h-6 bg- rounded-full">
+            <div className="flex justify-center items-center rounded-full hover:bg-green-100 p-2 transition">
               <button onClick={increaseProductAmount} className="w-full text-white ">
-                <img src="plus.png" alt="" className="" />
+                <img src="plus.png" alt="" className="w-5 h-5" />
               </button>
             </div>
           </div>
