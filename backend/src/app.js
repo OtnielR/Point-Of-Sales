@@ -20,6 +20,9 @@ import { createSalesRoutes } from "./routes/salesRoutes.js";
 import { saleDetailController } from "./controllers/saleDetailController.js";
 import { createSaleDetailRoutes } from "./routes/saleDetailRoutes.js";
 
+import { authController } from "./controllers/authController.js";
+import { createAuthRoutes } from "./routes/authRoutes.js";
+
 
 
 
@@ -49,6 +52,8 @@ export const createApp = async () => {
     app.use("/api/sales", createSalesRoutes(salesController(db)))
 
     app.use("/api/sale-detail", createSaleDetailRoutes(saleDetailController(db)))
+
+    app.use("/api/auth", createAuthRoutes(authController(db)))
 
     // Error handling
     app.use(errorHandler);
