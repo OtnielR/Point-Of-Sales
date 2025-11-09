@@ -6,8 +6,16 @@ export async function getSales() {
 }
 
 export async function getSale(id) {
-    const response = await api.get(`/api/sales/${id}`)
-    return response.data
+    if (!id) {
+        return false
+    }
+    try {
+        const response = await api.get(`/api/sales/${id}`)
+        return response.data
+
+    } catch (err) {
+        return false
+    }
 }
 
 export async function postSales(user_id, total_amount, paid_amount, change_amount, is_completed) {

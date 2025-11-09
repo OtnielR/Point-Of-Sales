@@ -5,16 +5,23 @@ import { getSale } from "../../api/sales.js"
 import { getProducts } from "../../api/products.js"
 import SalesProducts from "./sales-products.jsx"
 import SalesInfo from "./sales-info.jsx"
+import { useNavigate } from "react-router-dom"
 
 export default function SalesDetail({ id }) {
   const [sale, setSale] = useState([])
   const [user, setUser] = useState([])
   const [saleDetails, setSaleDetails] = useState([])
   const [products, setProducts] = useState([])
+  const navigate = useNavigate()
 
   useEffect(() => {
     const fetchData = async () => {
       const saleData = await getSale(id)
+
+      if (!saleData) {
+        navigate("/not-found")
+      }
+
       const userData = await getUser(saleData.user_id)
       const saleDetailsData = await getSaleDetailBySalesId(id)
       const productsData = await getProducts()

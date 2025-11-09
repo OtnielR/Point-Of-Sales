@@ -34,7 +34,6 @@ export default function Products() {
         setUser(users)
 
       } catch (err) {
-        console.log(err);
       }
     }
 
@@ -51,7 +50,6 @@ export default function Products() {
 
   const handleSelectChange = (e) => {
     const currentSelectValue = e.target.value
-    console.log(currentSelectValue)
 
     setSelectValue(currentSelectValue)
 

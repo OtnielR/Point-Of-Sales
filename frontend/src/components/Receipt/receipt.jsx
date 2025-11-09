@@ -24,6 +24,11 @@ export default function Receipt({
   useEffect(() => {
     const fetchData = async () => {
       const saleData = await getSale(saleId);
+
+      if (!saleData) {
+        return
+      }
+
       const userData = await getUser(saleData.user_id);
       const saleDetailData = await getSaleDetailBySalesId(saleId);
 

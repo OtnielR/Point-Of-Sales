@@ -1,5 +1,4 @@
 export default function CategoryList({ category, onDelete }) {
-  console.log(category);
 
   return (
     <div className="w-full">

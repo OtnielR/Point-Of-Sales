@@ -37,8 +37,6 @@ export default function SalesLists() {
   }
 
   const filterSalesByDate = (fromDate, toDate) => {
-    console.log("From Date:", fromDate)
-    console.log("To Date:", toDate)
 
     if (!fromDate, !toDate) {
       setSales(unFilteredSales)

@@ -16,7 +16,6 @@ export default function LoginForm() {
 
     let data = await login(username, password);
 
-    console.log(data);
 
     setErrorMessage(data.errorMessage);
 

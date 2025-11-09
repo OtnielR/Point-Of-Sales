@@ -18,7 +18,6 @@ export default function SalesInfo({ sale, user, saleDetail, products, index }) {
 
 
   useEffect(() => {
-    console.log("World", sale)
     const countData = () => {
       setCostPrices(formatToRupiah(countCostPrices(products, saleDetail)))
       setSellingPrices(formatToRupiah(countSellingPrice(products, saleDetail)))

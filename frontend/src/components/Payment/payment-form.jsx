@@ -35,6 +35,10 @@ export default function PaymentForm({ user, productOrders, togglePaymentForm, ha
   }
 
   const completedPayment = async () => {
+    if (isNaN(changeAmount)) {
+      return
+    }
+
     const sales = await postSales(user.id, total, customerMoneyRef.current.value, changeAmount, 1)
 
 
@@ -42,7 +46,6 @@ export default function PaymentForm({ user, productOrders, togglePaymentForm, ha
       postSaleDetail(sales.id, order.id, order.amount, order.amount * order.selling_price)
     });
 
-    console.log(sales)
 
     handleToggleReceipt(sales)
   }

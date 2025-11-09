@@ -83,6 +83,7 @@ export default function ProductsForm() {
               className="hidden"
               onChange={handleFileChange}
               accept="image/*"
+              required
             />
           </label>
 
@@ -92,6 +93,7 @@ export default function ProductsForm() {
               ref={productNameRef}
               type="text"
               className="border rounded px-2 py-1 w-full focus:ring-2 focus:ring-purple-500 outline-none"
+              required
             />
           </div>
 
@@ -100,6 +102,7 @@ export default function ProductsForm() {
             <select
               ref={productCategoryRef}
               className="border rounded px-2 py-1 w-full focus:ring-2 focus:ring-purple-500 outline-none"
+              required
             >
               {categories.map((category) => (
                 <option value={category.id} key={category.id}>
@@ -115,6 +118,7 @@ export default function ProductsForm() {
               ref={productCostPriceRef}
               type="number"
               className="border rounded px-2 py-1 w-full focus:ring-2 focus:ring-purple-500 outline-none"
+              required
             />
           </div>
 
@@ -124,6 +128,7 @@ export default function ProductsForm() {
               ref={productSellingPriceRef}
               type="number"
               className="border rounded px-2 py-1 w-full focus:ring-2 focus:ring-purple-500 outline-none"
+              required
             />
           </div>
 
@@ -133,6 +138,7 @@ export default function ProductsForm() {
               ref={productStockRef}
               type="number"
               className="border rounded px-2 py-1 w-full focus:ring-2 focus:ring-purple-500 outline-none"
+              required
             />
           </div>
 

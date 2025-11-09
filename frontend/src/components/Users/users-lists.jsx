@@ -9,7 +9,6 @@ export default function usersLists() {
   useEffect(() => {
     async function fetchData() {
       const data = await getUsers();
-      console.log(data)
       setUsers(data);
     }
 

@@ -7,8 +7,13 @@ export async function getProducts() {
 }
 
 export async function getProduct(id) {
-    const response = await api.get(`/api/products/${id}`)
-    return response.data
+    try {
+        const response = await api.get(`/api/products/${id}`)
+
+        return response.data
+    } catch (err) {
+        return false
+    }
 }
 
 export async function deleteProduct(id) {
@@ -52,7 +57,6 @@ export async function putProducts(id, name, categoryId, costPrice, sellingPrice,
     formData.append("selling_price", sellingPrice);
     formData.append("stock", stock);
 
-    console.log("Image: ", image)
 
     if (image) {
         formData.append("image", image);

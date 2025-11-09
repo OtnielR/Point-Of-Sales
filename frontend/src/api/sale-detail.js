@@ -6,8 +6,13 @@ export async function getSaleDetail() {
 }
 
 export async function getSaleDetailById(id) {
-    const response = await api.get(`/api/sale-detail/${id}`)
-    return response.data
+    try {
+        const response = await api.get(`/api/sale-detail/${id}`)
+        return response.data
+
+    } catch (err) {
+        return false
+    }
 }
 
 export async function getSaleDetailBySalesId(id) {

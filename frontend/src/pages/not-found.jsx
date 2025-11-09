@@ -5,7 +5,7 @@ export default function NotFound() {
     <div className="min-h-screen flex flex-col md:flex-row justify-center items-center gap-10 bg-gradient-to-br from-purple-50 via-white to-purple-100 p-8">
       <div className="flex justify-center items-center w-1/2">
         <img
-          src="11104.png"
+          src="/11104.png"
           alt="Not Found Illustration"
           className=" w-full h-auto  drop-shadow-xl rounded-xl"
         />
@@ -14,7 +14,7 @@ export default function NotFound() {
       <div className="flex flex-col justify-center items-center bg-white rounded-2xl shadow-2xl p-10 md:w-1/3 w-full border border-purple-100 text-center">
         <div className="mb-6">
           <img
-            src="DGF MARKET.png"
+            src="/DGF MARKET.png"
             alt="DGF Market Logo"
             className="w-40 h-auto object-contain drop-shadow-md"
           />
