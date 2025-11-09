@@ -1,7 +1,8 @@
 export function formatDate(date) {
-  let formattedDate = new Date(date);
+  let formattedDate = new Date(date + "Z");
 
   formattedDate = formattedDate.toLocaleString("id-ID", {
+    timeZone: "Asia/Jakarta",
     day: "numeric",
     month: "long",
     year: "numeric",
@@ -11,7 +12,11 @@ export function formatDate(date) {
     hour12: false,
   });
 
+  formattedDate += " WIB"
+
+
   return formattedDate;
+
 }
 
 export function getCurrentDate() {
