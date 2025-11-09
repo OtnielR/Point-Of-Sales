@@ -4,7 +4,7 @@ import { useState, useRef, useEffect } from "react"
 import { countSubtotal } from "../../utils/countBills"
 import { formatToRupiah } from "../../utils/currency"
 
-export default function PaymentForm({ productOrders, togglePaymentForm, handleToggleReceipt }) {
+export default function PaymentForm({ user, productOrders, togglePaymentForm, handleToggleReceipt }) {
   const [total, setTotal] = useState(0)
   const [stringTotal, setStringTotal] = useState(0)
   const [changeAmount, setChangeAmount] = useState(0)
@@ -35,7 +35,7 @@ export default function PaymentForm({ productOrders, togglePaymentForm, handleTo
   }
 
   const completedPayment = async () => {
-    const sales = await postSales(1, total, customerMoneyRef.current.value, changeAmount, 1)
+    const sales = await postSales(user.id, total, customerMoneyRef.current.value, changeAmount, 1)
 
 
     productOrders.forEach(order => {

@@ -4,7 +4,7 @@ import TransparentBlackBackground from "../SharedComponents/transparent-black-ba
 import Receipt from "../Receipt/receipt"
 import { useState } from "react"
 
-export default function Payment({ showPayment, togglePaymentForm, productOrders }) {
+export default function Payment({ user, showPayment, togglePaymentForm, productOrders }) {
   const [isShowReceipt, setIsShowReceipt] = useState(false)
   const [saleId, setSaleId] = useState([])
 
@@ -19,7 +19,7 @@ export default function Payment({ showPayment, togglePaymentForm, productOrders 
 
       {isShowReceipt ?
 
-        <Receipt saleId={saleId} togglePaymentForm={togglePaymentForm} handleToggleReceipt={handleToggleReceipt} productOrders={productOrders}></Receipt>
+        <Receipt user={user} saleId={saleId} togglePaymentForm={togglePaymentForm} handleToggleReceipt={handleToggleReceipt} productOrders={productOrders}></Receipt>
         :
 
         <div className="w-full h-full flex justify-center items-center">
@@ -29,18 +29,18 @@ export default function Payment({ showPayment, togglePaymentForm, productOrders 
 
             <div className="flex flex-row gap-5">
 
-            <div className="bg-white p-8 rounded-lg">
+              <div className="flex-1 bg-white p-8 rounded-lg">
 
-              <div className="font-bold text-xl">
-                <p>Payment Form</p>
+                <div className="font-bold text-xl">
+                  <p>Payment Form</p>
+                </div>
+                <PaymentLists productOrders={productOrders}></PaymentLists>
               </div>
-              <PaymentLists productOrders={productOrders}></PaymentLists>
-            </div>
 
-            <div className="bg-white p-8 rounded-lg">
-              <PaymentForm productOrders={productOrders} togglePaymentForm={togglePaymentForm} handleToggleReceipt={handleToggleReceipt}></PaymentForm>
+              <div className="bg-white py-8 px-20 rounded-lg">
+                <PaymentForm user={user} productOrders={productOrders} togglePaymentForm={togglePaymentForm} handleToggleReceipt={handleToggleReceipt}></PaymentForm>
 
-            </div>
+              </div>
             </div>
           </div>
 

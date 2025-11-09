@@ -4,7 +4,7 @@ import ProductOrder from "./product-order";
 import { countSubtotal } from "../../utils/countBills";
 import { formatToRupiah } from "../../utils/currency";
 
-function product_bils({ productOrders, removeOrders, togglePaymentForm }) {
+function product_bils({ user, productOrders, removeOrders, togglePaymentForm }) {
   const [subTotal, setSubTotal] = useState(0)
   const [discount, setDiscount] = useState(0)
   const [serviceCharge, setServiceCharge] = useState(0)
@@ -36,7 +36,7 @@ function product_bils({ productOrders, removeOrders, togglePaymentForm }) {
           <h1 className="font-bold text-2xl">Current Order</h1>
         </div>
         <div className="user">
-          <p className="">Fachri Solihin</p>
+          <p className="">{user.username}</p>
         </div>
 
         <div className="flex flex-col flex-1 overflow-y-scroll gap-4">

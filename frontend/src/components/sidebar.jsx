@@ -1,7 +1,10 @@
 import { Link, useLocation } from "react-router-dom";
+import { logout } from "../api/auth";
+import { useNavigate } from "react-router-dom";
 
 export default function Sidebar() {
   const location = useLocation();
+  const navigate = useNavigate()
 
   const mainNav = [
     { icon_url: "/home.png", link: "/", label: "Home" },
@@ -10,6 +13,12 @@ export default function Sidebar() {
     { icon_url: "/user.png", link: "/users", label: "Users" },
     { icon_url: "/bar-chart.png", link: "/sales", label: "Sales" },
   ];
+
+  const handleLogout = () => {
+    logout()
+
+    navigate("/login")
+  }
 
   return (
     <div className="h-screen w-28 p-4">
@@ -33,11 +42,10 @@ export default function Sidebar() {
               <Link
                 key={nav.link}
                 to={nav.link}
-                className={`w-10 h-10 flex items-center justify-center rounded-xl transition-all duration-200 ${
-                  isActive
-                    ? "bg-purple-100 border-2 border-purple-500 shadow-md"
-                    : "hover:bg-gray-100"
-                }`}
+                className={`w-10 h-10 flex items-center justify-center rounded-xl transition-all duration-200 ${isActive
+                  ? "bg-purple-100 border-2 border-purple-500 shadow-md"
+                  : "hover:bg-gray-100"
+                  }`}
               >
                 <img
                   src={nav.icon_url}
@@ -51,12 +59,12 @@ export default function Sidebar() {
 
 
         <div className="mb-1">
-          <Link
-            to="/"
+          <button
+            onClick={handleLogout}
             className="w-10 h-10 flex items-center justify-center rounded-xl hover:bg-red-50 transition-all duration-200"
           >
             <img src="/logout.png" alt="Logout" className="w-6 h-6" />
-          </Link>
+          </button>
         </div>
       </div>
     </div>
