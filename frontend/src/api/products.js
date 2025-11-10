@@ -72,3 +72,4 @@ export async function putProducts(id, name, categoryId, costPrice, sellingPrice,
         console.error(err);
     }
 }
+

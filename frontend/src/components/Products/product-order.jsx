@@ -10,6 +10,10 @@ export default function ProductOrder({ product, removeOrders, handleProductAmoun
   }, [product])
 
   const increaseProductAmount = () => {
+    if (productAmount >= product.stock) {
+      return
+    }
+
     setProductAmount(prev => prev + 1)
     product.amount += 1
 

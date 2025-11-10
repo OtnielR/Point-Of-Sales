@@ -4,7 +4,7 @@ import ProductOrder from "./product-order";
 import { countSubtotal } from "../../utils/countBills";
 import { formatToRupiah } from "../../utils/currency";
 
-function product_bils({ user, productOrders, removeOrders, togglePaymentForm }) {
+function ProductBills({ user, productOrders, removeOrders, togglePaymentForm }) {
   const [subTotal, setSubTotal] = useState(0)
   const [discount, setDiscount] = useState(0)
   const [serviceCharge, setServiceCharge] = useState(0)
@@ -25,6 +25,10 @@ function product_bils({ user, productOrders, removeOrders, togglePaymentForm }) 
 
     let newTotal = countSubtotal(productOrders)
     setTotal(formatToRupiah(newTotal))
+
+    setTax(formatToRupiah(tax))
+    setDiscount(formatToRupiah(discount))
+    setServiceCharge(formatToRupiah(serviceCharge))
   }, [productOrders])
 
 
@@ -52,15 +56,15 @@ function product_bils({ user, productOrders, removeOrders, togglePaymentForm }) 
             </div>
             <div className="flex flex-row justify-between">
               <p className="">Discount</p>
-              <p className="">Rp.{discount}</p>
+              <p className="">{discount}</p>
             </div>
             <div className="flex flex-row justify-between">
               <p className="">Service Charge</p>
-              <p className="">Rp.{serviceCharge}</p>
+              <p className="">{serviceCharge}</p>
             </div>
             <div className="flex flex-row justify-between">
               <p className="">Tax</p>
-              <p className="">Rp.{tax}</p>
+              <p className="">{tax}</p>
             </div>
           </div>
           <div className="bg-gray-300 py-4 px-6 rounded-lg">
@@ -78,4 +82,4 @@ function product_bils({ user, productOrders, removeOrders, togglePaymentForm }) 
   );
 }
 
-export default product_bils;
+export default ProductBills;

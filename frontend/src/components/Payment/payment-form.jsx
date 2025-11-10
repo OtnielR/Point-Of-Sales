@@ -3,6 +3,7 @@ import { postSaleDetail } from "../../api/sale-detail"
 import { useState, useRef, useEffect } from "react"
 import { countSubtotal } from "../../utils/countBills"
 import { formatToRupiah } from "../../utils/currency"
+import { putProducts } from "../../api/products"
 
 export default function PaymentForm({ user, productOrders, togglePaymentForm, handleToggleReceipt }) {
   const [total, setTotal] = useState(0)
@@ -43,7 +44,11 @@ export default function PaymentForm({ user, productOrders, togglePaymentForm, ha
 
 
     productOrders.forEach(order => {
+      let currentStock = order.stock - order.amount
+
       postSaleDetail(sales.id, order.id, order.amount, order.amount * order.selling_price)
+      putProducts(order.id, order.name, order.category_id, order.selling_price, order.cost_price, currentStock, null, order.image_url)
+
     });
 
 

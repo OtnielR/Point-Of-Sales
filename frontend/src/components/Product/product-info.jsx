@@ -52,7 +52,7 @@ export default function ProductInfo({ product }) {
 
           <div className="text-sm text-right">
             <p className="font-semibold text-gray-700">Stock</p>
-            <p className="text-gray-800">{product.stock}</p>
+            <p className={`${product.stock ? "text-gray-800" : "text-red-800"}`}>{product.stock}</p>
           </div>
         </div>
 

@@ -55,7 +55,7 @@ export const productsController = (db) => {
             } catch (err) {
                 next(err)
             }
-        }
+        },
 
 
 

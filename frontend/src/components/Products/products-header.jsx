@@ -214,13 +214,13 @@ export default function ProductsHeader({
                     <p>Stock</p>
                     <p className="flex flex-row gap-2">
                       <button
-                        className="w-full border px-4 rounded-md text-white bg-black"
+                        className="w-full border px-4 rounded-md text-white bg-purple-500"
                         onClick={() => handleSortByStock(true)}
                       >
                         Ascending
                       </button>
                       <button
-                        className="w-full border px-4 rounded-md text-white bg-black"
+                        className="w-full border px-4 rounded-md text-white bg-purple-500"
                         onClick={() => handleSortByStock(false)}
                       >
                         Descending

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { getProducts } from "../../api/products";
 import { getCategories } from "../../api/category";
 import Product from "./product";
-import Bills from './product_bils'
+import Bills from './product-bills'
 import Header from "./products-header";
 import Payment from "../Payment/payment";
 import { getUser } from "../../api/users";
@@ -137,6 +137,11 @@ export default function Products() {
 
 
   const handleAddOrder = (product) => {
+
+    if (!product.stock) {
+      return
+    }
+
     product['amount'] = 1
 
     if (productOrders.find(prod => prod.id === product.id)) {

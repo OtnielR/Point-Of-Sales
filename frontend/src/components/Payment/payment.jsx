@@ -19,7 +19,7 @@ export default function Payment({ user, showPayment, togglePaymentForm, productO
 
       {isShowReceipt ?
 
-        <Receipt user={user} saleId={saleId} togglePaymentForm={togglePaymentForm} handleToggleReceipt={handleToggleReceipt} productOrders={productOrders}></Receipt>
+        <Receipt user={user} saleId={saleId} togglePaymentForm={togglePaymentForm} handleToggleReceipt={handleToggleReceipt} productOrders={productOrders} onCancelRefresh={true}></Receipt>
         :
 
         <div className="w-full h-full flex justify-center items-center">

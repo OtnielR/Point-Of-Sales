@@ -31,10 +31,10 @@ export default function Product({ product, category, handleAddOrder }) {
           <div className='flex flex-row justify-between'>
             <div>
               <p className="font-bold">{sellingPrice}</p>
-              <p className="font-bold">Stock: {product.stock}</p>
+              <p className="font-bold">Stock: <span className={`${product.stock ? "text-black" : "text-red-600"}`}>{product.stock} </span></p>
             </div>
 
-            <div className="flex justify-center items-center rounded-full hover:bg-green-100 p-2 transition">
+            <div className={`flex justify-center items-center rounded-full ${product.stock ? "hover:bg-green-100" : "hover:bg-red-100"} p-2 transition`}>
               <button onClick={() => handleAddOrder(product)} className="w-8 rounded-full text-white text-center">
                 <img src="plus.png" alt="" className="w-8" />
               </button>

@@ -12,6 +12,7 @@ export default function Receipt({
   togglePaymentForm,
   handleToggleReceipt,
   productOrders,
+  onCancelRefresh
 }) {
   const [sale, setSale] = useState([]);
   const [saleDate, setSaleDate] = useState("");
@@ -93,6 +94,10 @@ export default function Receipt({
   const handleCancel = () => {
     handleToggleReceipt(0);
     togglePaymentForm();
+
+    if (onCancelRefresh) {
+      window.location.reload(false)
+    }
   };
 
   return (
