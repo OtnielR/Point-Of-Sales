@@ -155,7 +155,7 @@ export default function Receipt({
 
           <div className="mt-6 flex gap-4">
             <button
-              className="flex-1 bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg"
+              className="flex-1 bg-purple-600 hover:bg-purple-700 text-white py-2 rounded-lg"
               onClick={handlePrint}
             >
               Print Receipt

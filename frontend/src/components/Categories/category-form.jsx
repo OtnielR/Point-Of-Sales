@@ -40,7 +40,7 @@ export default function CategoryForm() {
           </div>
 
           <button
-            className="bg-purple-600 hover:bg-purple-700 text-white py-2 rounded-lg font-medium transition w-full"
+            className="bg-purple-600 hover:bg-purple-700 text-white py-2 rounded-lg font-semibold transition w-full"
             type="submit"
           >
             Submit
